@@ -39,6 +39,10 @@ public class Enemy : MonoBehaviour
         //死亡判定
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            //当たってきた球も消す
+            collision.gameObject.SetActive(false);
+            collision.transform.SetParent(deadParent);
+
             currentVirusState = VirusState.Dead;
             //Destroyは重くなるのでsetActiveを使用
             gameObject.SetActive(false);
