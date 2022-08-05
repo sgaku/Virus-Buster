@@ -6,19 +6,26 @@ public class VirusCreator : MonoBehaviour
 {
     //ターゲットの位置
     [SerializeField] Transform targetPosition;
+    public Transform TargetPosition
+    {
+        get { return targetPosition; }
+        private set { targetPosition = value; }
+    }
+    //ウイルス生成の際の親オブジェクト
+    [SerializeField] Transform virusParent;
+
     //ウイルスの種類を格納
     [SerializeField] List<GameObject> virusList = new List<GameObject>();
     float currentTime = 0f;
-    float createTime = 4f;
+    [SerializeField] float createTime;
     float createCount;
     Vector2 createPosition;
     Vector2 farMaxPosition;
     Vector2 farMinPosition;
-    Vector2 nearMaxPosition;
-    Vector2 nearMinPosition;
+    Vector2 diffVector;
+    float[] addVector = { -6, 6};
     //発生させる範囲の幅
     [SerializeField] Vector2 farDistanceRange;
-    [SerializeField] Vector2 nearDistanceRange;
 
     // Start is called before the first frame update
     void Start()
@@ -48,13 +55,23 @@ public class VirusCreator : MonoBehaviour
             farMinPosition = targetVector - farDistanceRange;
             createPosition.y = Random.Range(farMinPosition.y, farMaxPosition.y);
             createPosition.x = Random.Range(farMinPosition.x, farMaxPosition.x);
+            diffVector.x = targetVector.x - createPosition.x;
+            diffVector.y = targetVector.y - createPosition.y;
+            var x = Mathf.Abs(diffVector.x);
+            var y = Mathf.Abs(diffVector.y);
 
-            nearMaxPosition = targetVector + nearDistanceRange;
-            nearMinPosition = targetVector - nearDistanceRange;
-            
+            if (x < 3f)
+            {
+                var indexX = Random.Range(0, 1);
+                createPosition.x += addVector[indexX];
+            }
+            else if (y < 3f)
+            {
+                var indexY = Random.Range(0, 1);
+                createPosition.y += addVector[indexY];
+            }
 
-            createPosition = targetVector;
-            Instantiate(virusList[index], createPosition, Quaternion.identity);
+            Instantiate(virusList[index], createPosition, Quaternion.identity, virusParent);
             yield return null;
         }
     }
