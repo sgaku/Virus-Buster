@@ -34,14 +34,16 @@ public class Enemy : MonoBehaviour
     }
     //現在のウイルスの状態を格納するプロパティ
     public VirusState currentVirusState { get; set; }
-    void OnCollisionEnter(Collision collision)
+
+    void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.gameObject.name);
         //死亡判定
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("Bullet"))
         {
             //当たってきた球も消す
-            collision.gameObject.SetActive(false);
-            collision.transform.SetParent(deadParent);
+            other.gameObject.SetActive(false);
+            other.transform.SetParent(deadParent);
 
             currentVirusState = VirusState.Dead;
             //Destroyは重くなるのでsetActiveを使用
@@ -49,7 +51,9 @@ public class Enemy : MonoBehaviour
             //シーンのヒエラルキー整理のため、死亡したらこのオブジェクトの子にする
             transform.SetParent(deadParent);
         }
+
     }
+   
     // Start is called before the first frame update
     void Start()
     {
