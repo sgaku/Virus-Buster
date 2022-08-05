@@ -10,17 +10,24 @@ public class BulletController : MonoBehaviour
     public int moveOption;
     public float rad;
 
+    Vector2 min;
+    Vector2 max;
 
 
     void Start()
     {
-        
+        min = Camera.main.ViewportToWorldPoint(new Vector2(0,0));
+        max = Camera.main.ViewportToWorldPoint(new Vector2(1,1));
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Move();
+        Vector3 position = transform.position;
+        if (position.x < min.x || max.x < position.x || position.y < min.y || max.y < position.y)
+        {
+            transform.gameObject.SetActive(false);
+        }
     }
     public void Shoot(Vector3 shotForward)
     {

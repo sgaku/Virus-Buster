@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Virus
+  - ChargeBullet
   layers:
   - Default
   - TransparentFX

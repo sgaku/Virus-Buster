@@ -5,9 +5,11 @@ using System;
 
 public class CharaManager : MonoBehaviour
 {
+
+    [SerializeField] private Transform deadParent;
     //プレイヤーのパラメータ
     //プレイヤーの速度
-    public float speed = 0.5f;
+    [SerializeField] private float speed = 0.5f;
     //弾の連射速度
     public float fireRate;
     
@@ -40,85 +42,60 @@ public class CharaManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-
-
-        //カメラ追従の設定
-        //camera = GameObject.FindWithTag("MainCamera");
-        //diffCamera = camera.transform.position;
-
         audioSource = transform.GetComponent<AudioSource>();
-        childObject = new GameObject[o_max];
 
+        //子オブジェクトを非アクティブ化
+        childObject = new GameObject[o_max];
 		for(int i = 0; i < o_max ; i++){
 			childObject[i] = transform.GetChild(i).gameObject;
 		}
-		
-        //子オブジェクトを無効に
 		foreach(GameObject gamObj in childObject)
         {
 			gamObj.SetActive(false);
 		}
-        //rlfleupオブジェクトだけ有効
+
+        //rlfleupオブジェクトだけ有効にして表示
         nowObj = gameObject.transform.Find("rifle_down").gameObject;
         nowObj.SetActive(true);
 
-        //playerRigidbody = nowObj.GetComponent<Rigidbody>();
-        //plane.SetNormalAndPosition (Vector3.back, transform.localPosition);
-
-        //コルーチンで弾の生成
+        //コルーチンで弾の生成を開始
          StartCoroutine("Shoot");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("ww");
-        if(Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Z))
+        //１入力で必殺技（チャージショット）
+        if(Input.GetKey(KeyCode.Alpha1))
         {
-            Debug.Log("a");
-            specialSkill.chargeShot();
+            specialSkill.chargeShot(nowObj);
         }
+
+        //移動処理
         Move();
-        //カメラをキャラクターに追従させる
-        //camera.transform.position = transform.position + diffCamera;
-
-
-        
     }
 
     void Move()
     {
-                //マウスカーソルの位置に方向を向ける。実装できたらよし
-        if (moveOption== 1)
-        {
-            Vector3 mousePos = Input.mousePosition;
-            Vector2 charaPos = transform.position;
+        //マウスカーソルの位置に方向を向ける。
+       
+        Vector3 mousePos = Input.mousePosition;
+        Vector2 charaPos = transform.position;
 
-            float a = (mousePos.y - charaPos.y) / (mousePos.x - charaPos.x);
-            float angle = MathF.Atan(a);
+        float a = (mousePos.y - charaPos.y) / (mousePos.x - charaPos.x);
+        float angle = MathF.Atan(a);
 
-            nowObj.transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle*360);
-            Vector2 position1 = transform.position;
-            //Debug.Log(MathF.Sin(angle));
-            //Debug.Log(MathF.Cos(angle));
+        nowObj.transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle*360);
+        Vector2 position1 = transform.position;
+
+        var ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+
+        var pos = Camera.main.WorldToScreenPoint (nowObj.transform.position);
+        var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - pos);
+        
+        nowObj.transform.rotation = rotation;
 
 
-            var ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-
-            var pos = Camera.main.WorldToScreenPoint (nowObj.transform.position);
-		    var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - pos);
-            
-            //Debug.Log(rotation.z);
-            nowObj.transform.rotation = rotation;
-            //position1.x += speed * MathF.Sin(angle);
-            //position1.y += speed * MathF.Sin(angle);
-            //transform.position = position1;
-        }
-
-        //audioSource.PlayOneShot(sound1);
-
-        //基本的な移動
         Vector2 position = transform.position;
 
 
@@ -134,9 +111,6 @@ public class CharaManager : MonoBehaviour
                 nowObj.SetActive(true);
             }
             */
-            
-            
-
         }
         else if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
         {
@@ -150,8 +124,6 @@ public class CharaManager : MonoBehaviour
                 nowObj.SetActive(true);
             }
             */
-
-
         }
         else if (Input.GetKey("up") || Input.GetKey(KeyCode.W))
         {
@@ -180,8 +152,13 @@ public class CharaManager : MonoBehaviour
             */
         }
 
+        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0,0));
+        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1,1));
+        position.x = Mathf.Clamp(position.x, min.x+1.1f, max.x-1.1f);
+        position.y = Mathf.Clamp(position.y, min.y+0.9f, max.y-0.9f);
         transform.position = position;
     }
+
 
     //弾を発射するコルーチン
     //fireRateで弾の連射速度を調整
@@ -192,7 +169,7 @@ public class CharaManager : MonoBehaviour
             yield return new WaitForSeconds(fireRate);
             Vector3 pos = nowObj.transform.Find("bulletPosition").gameObject.transform.position;
      
-            BulletController nowBullet = Instantiate(bullet, pos, nowObj.transform.rotation);
+            BulletController nowBullet = Instantiate(bullet, pos, nowObj.transform.rotation, deadParent);
             audioSource.PlayOneShot(shootAudio);
 
             //nowBullet.shotForward = nowObj.transform.rotation.eulerAngles;
@@ -216,6 +193,7 @@ public class CharaManager : MonoBehaviour
     private IEnumerator Dead()
     {
         //死亡時のメソッド呼び出し
+        StopCoroutine("Shoot");
         nowObj.SetActive(false);
         GameObject downObj = transform.Find("hit2_down").gameObject;
         downObj.SetActive(true);

@@ -30,6 +30,7 @@ public class Special : MonoBehaviour
     private GameObject nowObj;
     public void chargeShot(GameObject obj)
     {
+        Debug.Log("chargeShot");
 
 
         if(skill1 == false)
@@ -38,35 +39,31 @@ public class Special : MonoBehaviour
         }
         else
         {
+            skill1 = false;
             nowObj = obj;
-            StartCoroutine("chargeShot");
+            StartCoroutine("chargeShotCoroutine");
         }
     }
 
     
-    public IEnumerator chargeShot()
+    public IEnumerator chargeShotCoroutine()
     {
         Debug.Log("a");
-        if(skill1 == false)
-        {
-            
-        }
-        else
-        {
+
         Debug.Log("aa");
         Vector3 pos = nowObj.transform.Find("bulletPosition").gameObject.transform.position;
         GameObject bullet = Instantiate(chargeBullet, pos, nowObj.transform.rotation);
         audioSource.PlayOneShot(chargeAudio);
         bullet.transform.SetParent(nowObj.transform);
-        skill1 = false;
         yield return new WaitForSeconds(chargeTime);
 
         var shotForward = (pos -nowObj.transform.Find("muzzleflash_rifle").gameObject.transform.position).normalized;
         bullet.GetComponent<BulletController>().Shoot(shotForward);
         audioSource.Stop();
+        bullet.transform.parent = null;
         audioSource.PlayOneShot(chargeShotAudio);
 
-        }
+        
 
     }
 
