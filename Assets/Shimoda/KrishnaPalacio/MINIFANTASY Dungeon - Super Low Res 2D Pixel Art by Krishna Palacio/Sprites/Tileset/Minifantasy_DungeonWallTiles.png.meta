@@ -866,7 +866,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      DoorwayTop_Minifantasy_DungeonWallTiles_29: 7973958641827522465
       DoorTR_Minifantasy_DungeonWallTiles_17: 5654757833078730701
       RedWall_Minifantasy_DungeonWallTiles_30: 9175820068487298826
       H6_DungeonWallTiles_9: 333306374016542641
@@ -893,6 +892,7 @@ TextureImporter:
       H4_Minifantasy_DungeonWallTiles_7: -6523334555459242297
       H7_Minifantasy_DungeonWallTiles_10: 216850059728359375
       DoorBR_Minifantasy_DungeonWallTiles_19: -3207387508226480730
+      DoorwayTop_Minifantasy_DungeonWallTiles_29: 7973958641827522465
       H1_Minifantasy_DungeonWallTiles_11: -5751794854050388275
       Minifantasy_DungeonWallTiles_27: -4789548814206109747
       V4_Minifantasy_DungeonWallTiles_4: 6861315946886594790
