@@ -10,11 +10,9 @@ public class Enemy : MonoBehaviour
     // public int score;
 
     //追跡するターゲット
-    [SerializeField] Transform targetObject;
+    Transform targetObject;
     //移動に使うrigidBody
     [SerializeField] Rigidbody2D rigidBody2d;
-    //死亡したらこのオブジェクトを親にする
-    [SerializeField] Transform deadParent;
     //移動スピード
     [SerializeField] float speed;
     //移動する際の角度
@@ -43,20 +41,17 @@ public class Enemy : MonoBehaviour
         {
             //当たってきた球も消す
             other.gameObject.SetActive(false);
-            other.transform.SetParent(deadParent);
 
             currentVirusState = VirusState.Dead;
             //Destroyは重くなるのでsetActiveを使用
             gameObject.SetActive(false);
-            //シーンのヒエラルキー整理のため、死亡したらこのオブジェクトの子にする
-            transform.SetParent(deadParent);
         }
 
     }
-   
     // Start is called before the first frame update
     void Start()
     {
+        targetObject = ServiceLocator.i.virusCreator.TargetPosition;
         currentVirusState = VirusState.Alive;
         prePosition = transform.position;
     }
