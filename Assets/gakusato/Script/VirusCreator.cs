@@ -39,7 +39,7 @@ public class VirusCreator : MonoBehaviour
         currentTime += Time.deltaTime;
         if (currentTime > createTime)
         {
-            createCount = Random.Range(4, 10);
+            createCount = Random.Range(6, 10);
             StartCoroutine(CreateVirus(createCount));
             currentTime = 0;
         }
