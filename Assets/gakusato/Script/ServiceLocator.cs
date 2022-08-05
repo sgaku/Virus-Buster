@@ -7,6 +7,7 @@ using UnityEngine;
 public class ServiceLocator : MonoBehaviour
 {
     public VirusCreator virusCreator;
+    public CharaManager charaManager;
     public static ServiceLocator i;
 
     void Awake()

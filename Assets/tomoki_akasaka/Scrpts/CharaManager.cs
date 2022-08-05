@@ -5,6 +5,13 @@ using System;
 
 public class CharaManager : MonoBehaviour
 {
+    public enum CharaState
+    {
+        Alive,
+        Dead,
+    }
+
+    public CharaState currentCharaState{get; set;}
 
     [SerializeField] private Transform deadParent;
     //プレイヤーのパラメータ
@@ -193,6 +200,7 @@ public class CharaManager : MonoBehaviour
     private IEnumerator Dead()
     {
         //死亡時のメソッド呼び出し
+        currentCharaState = CharaState.Dead;
         StopCoroutine("Shoot");
         nowObj.SetActive(false);
         GameObject downObj = transform.Find("hit2_down").gameObject;
