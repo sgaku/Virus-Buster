@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public float speed = 0.5f; //銃弾のスピード
-    public Vector3 shotForward;
+    //public Vector3 shotForward;
     public string rotation;
     public int moveOption;
     public float rad;
@@ -22,7 +22,7 @@ public class BulletController : MonoBehaviour
     {
         //Move();
     }
-    public void Shoot()
+    public void Shoot(Vector3 shotForward)
     {
         transform.GetComponent<Rigidbody2D>().velocity = shotForward * speed;
         //Move();
