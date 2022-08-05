@@ -18,6 +18,7 @@ public class CharaManager : MonoBehaviour
     //効果音関係
     AudioSource audioSource;
     public AudioClip shootAudio;
+    public AudioClip deadAudio;
 
     //移動方法のオプション
     public int moveOption;
@@ -33,7 +34,7 @@ public class CharaManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = transform.GetComponent<AudioSource>();
         childObject = new GameObject[o_max];
 
 		for(int i = 0; i < o_max ; i++){
@@ -45,7 +46,7 @@ public class CharaManager : MonoBehaviour
 			gamObj.SetActive(false);
 		}
         //rlfleupオブジェクトだけ有効
-        nowObj = gameObject.transform.Find("rifle_up").gameObject;
+        nowObj = gameObject.transform.Find("rifle_down").gameObject;
         nowObj.SetActive(true);
 
         //playerRigidbody = nowObj.GetComponent<Rigidbody>();
@@ -82,12 +83,12 @@ public class CharaManager : MonoBehaviour
 
             var pos = Camera.main.WorldToScreenPoint (nowObj.transform.localPosition);
 		    var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - pos);
-		    nowObj.transform.localRotation = rotation;
+            
+            Debug.Log(rotation.z);
+            nowObj.transform.localRotation = rotation;
             //position1.x += speed * MathF.Sin(angle);
             //position1.y += speed * MathF.Sin(angle);
             //transform.position = position1;
-            return;
-            
         }
 
         //audioSource.PlayOneShot(sound1);
@@ -95,21 +96,27 @@ public class CharaManager : MonoBehaviour
         //基本的な移動
         Vector2 position = transform.position;
 
-        if (Input.GetKey("left"))
+
+        if (Input.GetKey("left") || Input.GetKey((KeyCode.A)))
         {
             position.x -= speed;
+
+            /*
             if(nowObj.name != "rifle_left")
             {
                 nowObj.SetActive(false);
                 nowObj = gameObject.transform.Find("rifle_left").gameObject;
                 nowObj.SetActive(true);
             }
+            */
+            
             
 
         }
-        else if (Input.GetKey("right"))
+        else if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
         {
             position.x += speed;
+            /*
             if(nowObj.name != "rifle_right")
             {
                 nowObj.SetActive(false);
@@ -117,12 +124,14 @@ public class CharaManager : MonoBehaviour
                 nowObj = gameObject.transform.Find("rifle_right").gameObject;
                 nowObj.SetActive(true);
             }
+            */
 
 
         }
-        else if (Input.GetKey("up"))
+        else if (Input.GetKey("up") || Input.GetKey(KeyCode.W))
         {
             position.y += speed;
+            /*
             if(nowObj.name != "rifle_up")
             {
                 nowObj.SetActive(false);
@@ -130,18 +139,20 @@ public class CharaManager : MonoBehaviour
                 nowObj = gameObject.transform.Find("rifle_up").gameObject;
                 nowObj.SetActive(true);
             }
+            */
         }
-        else if (Input.GetKey("down"))
+        else if (Input.GetKey("down") || Input.GetKey(KeyCode.S))
         {
             position.y -= speed;
+            /*
             if(nowObj.name != "rifle_down")
             {
-                
                 nowObj.SetActive(false);
 
                 nowObj = gameObject.transform.Find("rifle_down").gameObject;
                 nowObj.SetActive(true);
             }
+            */
         }
 
         transform.position = position;
@@ -157,16 +168,41 @@ public class CharaManager : MonoBehaviour
             Vector2 pos = nowObj.transform.Find("bulletPosition").gameObject.transform.position;
      
             BulletController nowBullet = Instantiate(bullet, pos, nowObj.transform.rotation);
+            audioSource.PlayOneShot(shootAudio);
+
             nowBullet.shotForward = nowObj.transform.rotation.eulerAngles;
             //nowBullet.shotForward = nowObj.transform.forward;
             nowBullet.shotForward = (new Vector3 (pos.x, pos.y, 0) - nowObj.transform.Find("muzzleflash_rifle").gameObject.transform.position).normalized;
 
-            Debug.Log(nowBullet.shotForward);
+            //Debug.Log(nowBullet.shotForward);
             nowBullet.rotation=nowObj.name;
             nowBullet.Shoot();
 
             //nowBullet.rad = Quaternion.Euler(nowObj.transform.Find("bulletPosition").gameObject.transform.position - nowObj.transform.position );
      
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        //ウイルスと衝突したとき
+        if (collision.gameObject.tag == "Virus")
+        {
+            //死亡時のメソッド呼び出し
+            Dead();
+        }
+        Debug.Log("OnCollisionEnter2D: " + collision.gameObject.name);
+    }
+
+    private IEnumerator Dead()
+    {
+        //死亡時のメソッド呼び出し
+        nowObj.SetActive(false);
+        GameObject downObj = transform.Find("hit2_down").gameObject;
+        downObj.SetActive(true);
+        audioSource.PlayOneShot(deadAudio);
+        yield return new WaitForSeconds(3);
+        downObj.SetActive(false);
+
     }
 }
