@@ -44,8 +44,8 @@ public class CharaManager : MonoBehaviour
 
 
         //カメラ追従の設定
-        camera = GameObject.FindWithTag("MainCamera");
-        diffCamera = camera.transform.position;
+        //camera = GameObject.FindWithTag("MainCamera");
+        //diffCamera = camera.transform.position;
 
         audioSource = transform.GetComponent<AudioSource>();
         childObject = new GameObject[o_max];
@@ -73,14 +73,17 @@ public class CharaManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("ww");
+        if(Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Z))
+        {
+            Debug.Log("a");
+            specialSkill.chargeShot();
+        }
         Move();
         //カメラをキャラクターに追従させる
-        camera.transform.position = transform.position + diffCamera;
+        //camera.transform.position = transform.position + diffCamera;
 
-        if(Input.GetKey(KeyCode.Alpha1))
-        {
-            specialSkill.chargeShot(nowObj);
-        }
+
         
     }
 
@@ -106,7 +109,7 @@ public class CharaManager : MonoBehaviour
             var pos = Camera.main.WorldToScreenPoint (nowObj.transform.position);
 		    var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - pos);
             
-            Debug.Log(rotation.z);
+            //Debug.Log(rotation.z);
             nowObj.transform.rotation = rotation;
             //position1.x += speed * MathF.Sin(angle);
             //position1.y += speed * MathF.Sin(angle);
@@ -205,13 +208,13 @@ public class CharaManager : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         //ウイルスと衝突したとき
         if (collision.gameObject.tag == "Virus")
         {
             //死亡時のメソッド呼び出し
-            Dead();
+            StartCoroutine("Dead");
         }
         Debug.Log("OnCollisionEnter2D: " + collision.gameObject.name);
     }

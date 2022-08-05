@@ -12,6 +12,8 @@ public class Special : MonoBehaviour
 
     public AudioClip chargeAudio;
     public AudioClip chargeShotAudio;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +27,26 @@ public class Special : MonoBehaviour
         
     }
 
-    public IEnumerator chargeShot(GameObject obj)
+    private GameObject nowObj;
+    public void chargeShot(GameObject obj)
     {
+
+
+        if(skill1 == false)
+        {
+
+        }
+        else
+        {
+            nowObj = obj;
+            StartCoroutine("chargeShot");
+        }
+    }
+
+    
+    public IEnumerator chargeShot()
+    {
+        Debug.Log("a");
         if(skill1 == false)
         {
             
@@ -34,14 +54,14 @@ public class Special : MonoBehaviour
         else
         {
         Debug.Log("aa");
-        Vector3 pos = obj.transform.Find("bulletPosition").gameObject.transform.position;
-        GameObject bullet = Instantiate(chargeBullet, pos, obj.transform.rotation);
+        Vector3 pos = nowObj.transform.Find("bulletPosition").gameObject.transform.position;
+        GameObject bullet = Instantiate(chargeBullet, pos, nowObj.transform.rotation);
         audioSource.PlayOneShot(chargeAudio);
-        bullet.transform.SetParent(obj.transform);
+        bullet.transform.SetParent(nowObj.transform);
         skill1 = false;
         yield return new WaitForSeconds(chargeTime);
 
-        var shotForward = (pos -obj.transform.Find("muzzleflash_rifle").gameObject.transform.position).normalized;
+        var shotForward = (pos -nowObj.transform.Find("muzzleflash_rifle").gameObject.transform.position).normalized;
         bullet.GetComponent<BulletController>().Shoot(shotForward);
         audioSource.Stop();
         audioSource.PlayOneShot(chargeShotAudio);
