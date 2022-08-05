@@ -1650,12 +1650,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Minifantasy_CreaturesShadowHumanoidIdle_56: -7020942823457289320
+      Minifantasy_CreaturesShadowHumanoidIdle_57: 19379484970894771
       Minifantasy_CreaturesShadowHumanoidIdle_0: -2562138444706443875
       Minifantasy_CreaturesShadowHumanoidIdle_19: 3149349869636851456
       Minifantasy_CreaturesShadowHumanoidIdle_29: -3061033421389103263
-      Minifantasy_CreaturesShadowHumanoidIdle_62: -7161254980905270919
+      Minifantasy_CreaturesShadowHumanoidIdle_56: -7020942823457289320
       Minifantasy_CreaturesShadowHumanoidIdle_23: 2912572837714578881
+      Minifantasy_CreaturesShadowHumanoidIdle_27: -8224743365537991438
       Minifantasy_CreaturesShadowHumanoidIdle_34: 5180722440286451541
       Minifantasy_CreaturesShadowHumanoidIdle_51: -4206960720356518107
       Minifantasy_CreaturesShadowHumanoidIdle_44: 8420150361316561052
@@ -1663,7 +1664,6 @@ TextureImporter:
       Minifantasy_CreaturesShadowHumanoidIdle_41: 858187534151608240
       Minifantasy_CreaturesShadowHumanoidIdle_50: -8862618524603705664
       Minifantasy_CreaturesShadowHumanoidIdle_46: -7486425771686942762
-      Minifantasy_CreaturesShadowHumanoidIdle_57: 19379484970894771
       Minifantasy_CreaturesShadowHumanoidIdle_3: 5866982552679290932
       Minifantasy_CreaturesShadowHumanoidIdle_4: 4549860067406503186
       Minifantasy_CreaturesShadowHumanoidIdle_17: -3135827316636659225
@@ -1708,10 +1708,10 @@ TextureImporter:
       Minifantasy_CreaturesShadowHumanoidIdle_11: 4494681156953839222
       Minifantasy_CreaturesShadowHumanoidIdle_33: -2739534221319381765
       Minifantasy_CreaturesShadowHumanoidIdle_35: -4298592298866761818
-      Minifantasy_CreaturesShadowHumanoidIdle_47: 7278895396220556331
+      Minifantasy_CreaturesShadowHumanoidIdle_62: -7161254980905270919
       Minifantasy_CreaturesShadowHumanoidIdle_5: 8332119704114880645
       Minifantasy_CreaturesShadowHumanoidIdle_49: 8534600868291777322
-      Minifantasy_CreaturesShadowHumanoidIdle_27: -8224743365537991438
+      Minifantasy_CreaturesShadowHumanoidIdle_47: 7278895396220556331
       Minifantasy_CreaturesShadowHumanoidIdle_25: -886987057130813764
       Minifantasy_CreaturesShadowHumanoidIdle_43: 5105719493148934417
   spritePackingTag: 

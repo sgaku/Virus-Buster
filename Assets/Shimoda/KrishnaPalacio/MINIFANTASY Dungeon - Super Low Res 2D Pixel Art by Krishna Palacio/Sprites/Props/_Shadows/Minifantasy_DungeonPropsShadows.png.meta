@@ -892,9 +892,9 @@ TextureImporter:
       Plate_Shadow_Minifantasy_DungeonPropsShadows_9: 7746532262694463226
       TW1_Shadow_Minifantasy_DungeonPropsShadows_3: -1251097633990704145
       B4_Shadow_Minifantasy_DungeonPropsShadows_22: 2521061885386690621
+      CM_Shadow_Minifantasy_DungeonPropsShadows_10: -5707590503024773065
       B6_Shadow_Minifantasy_DungeonPropsShadows_24: -7232355327869492076
-      Candle_Shadow_Minifantasy_DungeonPropsShadows_13: -8420322007779036204
-      Statue_Shadow_Minifantasy_DungeonPropsShadows_32: 5812831960368060511
+      Bag1_Shadow_Minifantasy_DungeonPropsShadows_6: -5018907269183208951
       Chair4_Shadow_Minifantasy_DungeonPropsShadows_28: 7746534282326919062
       Chair5_Shadow_Minifantasy_DungeonPropsShadows_11: -7705244556953326594
       Cauldron_Shadow_Minifantasy_DungeonPropsShadows_31: -3040155771120981901
@@ -912,11 +912,11 @@ TextureImporter:
       B1_Shadow_Minifantasy_DungeonPropsShadows_19: 5528457433268544252
       Chair1_Shadow_Minifantasy_DungeonPropsShadows_25: -8754962507700609825
       B2_Shadow_Minifantasy_DungeonPropsShadows_20: 8098068279398977029
-      Chair6_Shadow_Minifantasy_DungeonPropsShadows_12: -5337670303548885857
-      Bag1_Shadow_Minifantasy_DungeonPropsShadows_6: -5018907269183208951
-      TB2_Shadow_Minifantasy_DungeonPropsShadows_15: -3263390419124328559
-      CM_Shadow_Minifantasy_DungeonPropsShadows_10: -5707590503024773065
+      Candle_Shadow_Minifantasy_DungeonPropsShadows_13: -8420322007779036204
       Chair2_Shadow_Minifantasy_DungeonPropsShadows_26: -6877039535093087107
+      TB2_Shadow_Minifantasy_DungeonPropsShadows_15: -3263390419124328559
+      Chair6_Shadow_Minifantasy_DungeonPropsShadows_12: -5337670303548885857
+      Statue_Shadow_Minifantasy_DungeonPropsShadows_32: 5812831960368060511
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
