@@ -208,15 +208,9 @@ public class CharaManager : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public void startCoroutineDead()
     {
-        //ウイルスと衝突したとき
-        if (collision.gameObject.tag == "Virus")
-        {
-            //死亡時のメソッド呼び出し
-            StartCoroutine("Dead");
-        }
-        Debug.Log("OnCollisionEnter2D: " + collision.gameObject.name);
+        StartCoroutine("Dead");
     }
 
     private IEnumerator Dead()
