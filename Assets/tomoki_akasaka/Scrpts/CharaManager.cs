@@ -29,11 +29,24 @@ public class CharaManager : MonoBehaviour
     public BulletController bullet;
     Plane plane = new Plane();
 	float distance = 0;
+
+    public Vector3 diffCamera;
+    public GameObject camera;
+    public Special specialSkill;
+
+
     
 
     // Start is called before the first frame update
     void Start()
     {
+
+
+
+        //カメラ追従の設定
+        camera = GameObject.FindWithTag("MainCamera");
+        diffCamera = camera.transform.position;
+
         audioSource = transform.GetComponent<AudioSource>();
         childObject = new GameObject[o_max];
 
@@ -42,7 +55,8 @@ public class CharaManager : MonoBehaviour
 		}
 		
         //子オブジェクトを無効に
-		foreach(GameObject gamObj in childObject){
+		foreach(GameObject gamObj in childObject)
+        {
 			gamObj.SetActive(false);
 		}
         //rlfleupオブジェクトだけ有効
@@ -60,6 +74,14 @@ public class CharaManager : MonoBehaviour
     void Update()
     {
         Move();
+        //カメラをキャラクターに追従させる
+        camera.transform.position = transform.position + diffCamera;
+
+        if(Input.GetKey(KeyCode.Alpha1))
+        {
+            specialSkill.chargeShot(nowObj);
+        }
+        
     }
 
     void Move()
@@ -81,11 +103,11 @@ public class CharaManager : MonoBehaviour
 
             var ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 
-            var pos = Camera.main.WorldToScreenPoint (nowObj.transform.localPosition);
+            var pos = Camera.main.WorldToScreenPoint (nowObj.transform.position);
 		    var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - pos);
             
             Debug.Log(rotation.z);
-            nowObj.transform.localRotation = rotation;
+            nowObj.transform.rotation = rotation;
             //position1.x += speed * MathF.Sin(angle);
             //position1.y += speed * MathF.Sin(angle);
             //transform.position = position1;
@@ -165,18 +187,18 @@ public class CharaManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(fireRate);
-            Vector2 pos = nowObj.transform.Find("bulletPosition").gameObject.transform.position;
+            Vector3 pos = nowObj.transform.Find("bulletPosition").gameObject.transform.position;
      
             BulletController nowBullet = Instantiate(bullet, pos, nowObj.transform.rotation);
             audioSource.PlayOneShot(shootAudio);
 
-            nowBullet.shotForward = nowObj.transform.rotation.eulerAngles;
+            //nowBullet.shotForward = nowObj.transform.rotation.eulerAngles;
             //nowBullet.shotForward = nowObj.transform.forward;
-            nowBullet.shotForward = (new Vector3 (pos.x, pos.y, 0) - nowObj.transform.Find("muzzleflash_rifle").gameObject.transform.position).normalized;
+            var shotForward = (pos -nowObj.transform.Find("muzzleflash_rifle").gameObject.transform.position).normalized;
 
             //Debug.Log(nowBullet.shotForward);
-            nowBullet.rotation=nowObj.name;
-            nowBullet.Shoot();
+            //nowBullet.rotation=nowObj.name;
+            nowBullet.Shoot(shotForward);
 
             //nowBullet.rad = Quaternion.Euler(nowObj.transform.Find("bulletPosition").gameObject.transform.position - nowObj.transform.position );
      
