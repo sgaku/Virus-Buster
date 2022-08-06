@@ -36,8 +36,8 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("hoge" + newHighScore);
         HighScore = newHighScore;
 
-        // ResultCanvas = GameObject.Find("ResultCanvas");//���U���g�L�����o�X�𖳌���
-        // ResultCanvas.SetActive(false);
+        ResultCanvas = GameObject.Find("ResultCanvas");//���U���g�L�����o�X�𖳌���
+        ResultCanvas.SetActive(false);
     }
 
     // �폜���̏���
@@ -69,7 +69,7 @@ public class ScoreManager : MonoBehaviour
         // �X�R�A��ۑ�
         PlayerPrefs.SetInt("SCORE1", HighScore);
         PlayerPrefs.Save();
-        // ResultCanvas.SetActive(true);//���U���g�L�����o�X������
+        ResultCanvas.SetActive(true);//���U���g�L�����o�X������
     }
     void OnDestroy()
     {
