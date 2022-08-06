@@ -43,12 +43,33 @@ public class CharaManager : MonoBehaviour
     public GameObject camera;
     public Special specialSkill;
 
+    [SerializeField] float initialMoveSpeed;
+    [SerializeField] float initialBulletPower;
+
+
 
     
 
     // Start is called before the first frame update
     void Start()
     {
+        //Playerの状態をAliveに
+        currentCharaState = CharaState.Alive;
+
+        //スキルレベルに応じてスキルの使用を許可
+        float skillLevel = PlayerPrefs.GetFloat("SkillLevel", 0);
+        if (skillLevel >= 1)
+        {
+            specialSkill.skill1 = true;
+        } 
+        fireRate = PlayerPrefs.GetFloat("FireRate", 0.3f);
+        speed = PlayerPrefs.GetFloat("MoveSpeed", initialMoveSpeed);
+        float nowBulletPower = PlayerPrefs.GetFloat("MoveSpeed", initialBulletPower);
+
+
+
+
+
         audioSource = transform.GetComponent<AudioSource>();
 
         //子オブジェクトを非アクティブ化
