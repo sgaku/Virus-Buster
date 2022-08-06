@@ -1,75 +1,84 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;  // �ǉ����܂��傤
+using UnityEngine.UI;  // 追加しましょう
 
 public class ScoreManager : MonoBehaviour
 
 {
-    private Text ScoreText;//�X�R�A��\������e�L�X�g
-    private Text HighScoreText;//����܂ł̃n�C�X�R�A��\������
+    private Text ScoreText;//スコアを表示するテキスト
+    private Text HighScoreText;//これまでのハイスコアを表示する
+    private Text KillEnemyText;//殺した敵の数のテキスト
 
-    private int TotalScore = 0;//�X�R�A�̍��v
-    [HideInInspector] public int EndScore;//�v���C���[�����񂾂Ƃ��̃X�R�A
-    private int HighScore = 0;//�O��܂ł̃n�C�X�R�A
+    private int TotalScore = 0;//スコアの合計
+    [HideInInspector] public int EndScore;//プレイヤーが死んだときのスコア
+    private int HighScore = 0;//前回までのハイスコア
+    private int TotalKill = 0;//総キル数
 
-    GameObject ScoreRanking;//�����L���O�̃Q�[���I�u�W�F�N�g���擾
-    private GameObject ResultCanvas;//���U���g�L�����o�X
+    GameObject ScoreRanking;//ランキングのゲームオブジェクトを取得
+    private GameObject ResultCanvas;//リザルトキャンバス
 
-    public static ScoreManager instance;//instance�ŌĂяo���p
+    public static ScoreManager instance;//instanceで呼び出す用
 
 
-    public void Awake()//�O����Ăяo����悤��
+    public void Awake()//外から呼び出せるように
     {
         if (instance == null)
         {
             instance = this;
         }
     }
-    // ���������̏���
+    // 初期化時の処理
     void Start()
     {
         int newHighScore;
-
-        newHighScore = PlayerPrefs.GetInt("SCORE1",0);
-
-        Debug.Log("hoge" + newHighScore);
+        // スコアのロード
+        newHighScore = PlayerPrefs.GetInt("SCORE1", 1000);
         HighScore = newHighScore;
 
-        ResultCanvas = GameObject.Find("ResultCanvas");//���U���g�L�����o�X�𖳌���
+
+        int newScore;
+        newScore = PlayerPrefs.GetInt("SCORE2", 0);
+        ResultCanvas = GameObject.Find("ResultCanvas");//リザルトキャンバスを無効化
+
         ResultCanvas.SetActive(false);
     }
+    // 削除時の処理
 
-    // �폜���̏���
-    
 
-    // �X�V
+    // 更新
     void Update()
     {
-
-        ScoreText = GameObject.Find("ScoreText").GetComponent<Text>();//�X�R�A�e�L�X�g�𖼑O�Ŏ擾
-        HighScoreText = GameObject.Find("HighScoreText").GetComponent<Text>();//���O�Ŏ擾
-        ScoreText.text = "Score:" + TotalScore.ToString();//�X�R�A���X�V�A�\��
-        HighScoreText.text = "HighScore:" + HighScore;//�n�C�X�R�A�̕\��
-        
-
+        ScoreText = GameObject.Find("ScoreText").GetComponent<Text>();//スコアテキストを名前で取得
+        HighScoreText = GameObject.Find("HighScoreText").GetComponent<Text>();//名前で取得
+        KillEnemyText = GameObject.Find("KillEnemyText").GetComponent<Text>();//名前で取得
+        ScoreText.text = "Exp:" + TotalScore.ToString();//スコアを更新、表示
+        HighScoreText.text = "HighScore:" + HighScore;//ハイスコアの表示
+        KillEnemyText.text = "Kill:" + TotalKill.ToString();//キル数の表示
     }
-    public void ScoreCount(int e)//�X�R�A���Z�̃��\�b�h
+    public void ScoreCount(int e)//スコア加算のメソッド
     {
-        TotalScore += e;//���������΃X�R�A���Z�ł���
+        TotalScore += e;//引数入れればスコア加算できる
     }
-    public void PlayerDeath()//�v���C���[������z��
+    public void KillCount()//キル数加算のメソッド
     {
-        EndScore = TotalScore;//�ŏI�X�R�A���i�[
-        Debug.Log("EndScore��" + EndScore);
-        if (EndScore >= HighScore)//����ƃn�C�X�R�A���ׂ�
+        TotalKill++;//呼べばスコア加算できる
+    }
+    public void PlayerDeath()//プレイヤーが死んだzら
+    {
+        EndScore = TotalScore;//最終スコアを格納
+        Debug.Log("EndScoreは" + EndScore);
+        if (EndScore >= HighScore)//今回とハイスコアを比べる
         {
-            HighScore = EndScore;//�n�C�X�R�A���X�V
+            HighScore = EndScore;//ハイスコアを更新
         }
-        // �X�R�A��ۑ�
+        // スコアを保存
         PlayerPrefs.SetInt("SCORE1", HighScore);
+        PlayerPrefs.SetInt("SCORE2", EndScore);
         PlayerPrefs.Save();
-        ResultCanvas.SetActive(true);//���U���g�L�����o�X������
+
+
+        ResultCanvas.SetActive(true);//リザルトキャンバスを召喚
     }
     void OnDestroy()
     {

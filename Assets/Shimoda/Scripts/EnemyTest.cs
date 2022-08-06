@@ -17,6 +17,7 @@ public class EnemyTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))//敵が死んだ設定
         {
             ScoreManager.instance.ScoreCount(Score);//スコアを引数に入れて合計スコアを増やすメソッド
+            ScoreManager.instance.KillCount();//キル数増やす
         }
 
     }
