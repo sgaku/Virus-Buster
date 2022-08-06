@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour
     private GameObject ResultCanvas;//���U���g�L�����o�X
 
     public static ScoreManager instance;//instance�ŌĂяo���p
-    
+
 
     public void Awake()//�O����Ăяo����悤��
     {
@@ -30,25 +30,29 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         int newHighScore;
-        // �X�R�A�̃��[�h
+
         newHighScore = PlayerPrefs.GetInt("SCORE1",0);
+
         Debug.Log("hoge" + newHighScore);
         HighScore = newHighScore;
 
         // ResultCanvas = GameObject.Find("ResultCanvas");//���U���g�L�����o�X�𖳌���
         // ResultCanvas.SetActive(false);
     }
+
     // �폜���̏���
     
 
     // �X�V
     void Update()
     {
+
         ScoreText = GameObject.Find("ScoreText").GetComponent<Text>();//�X�R�A�e�L�X�g�𖼑O�Ŏ擾
         HighScoreText = GameObject.Find("HighScoreText").GetComponent<Text>();//���O�Ŏ擾
         ScoreText.text = "Score:" + TotalScore.ToString();//�X�R�A���X�V�A�\��
         HighScoreText.text = "HighScore:" + HighScore;//�n�C�X�R�A�̕\��
         
+
     }
     public void ScoreCount(int e)//�X�R�A���Z�̃��\�b�h
     {
@@ -69,6 +73,6 @@ public class ScoreManager : MonoBehaviour
     }
     void OnDestroy()
     {
-        
+
     }
 }

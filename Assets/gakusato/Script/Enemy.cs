@@ -35,12 +35,19 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.name);
+        // Debug.Log(other.gameObject.name);
         //死亡判定
         if (other.gameObject.CompareTag("Bullet"))
         {
             //当たってきた球も消す
             other.gameObject.SetActive(false);
+            ServiceLocator.i.scoreManager.ScoreCount(score);
+            currentVirusState = VirusState.Dead;
+            //Destroyは重くなるのでsetActiveを使用
+            gameObject.SetActive(false);
+        }
+        else if (other.CompareTag("ChargeBullet"))
+        {
             ServiceLocator.i.scoreManager.ScoreCount(score);
             currentVirusState = VirusState.Dead;
             //Destroyは重くなるのでsetActiveを使用

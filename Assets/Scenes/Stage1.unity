@@ -651,6 +651,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3309450067252347871, guid: 7b3d853df0d8a34449a69733e9b5ea21, type: 3}
+      propertyPath: chargeBullet
+      value: 
+      objectReference: {fileID: 5134302112313211409, guid: bf42adc1eca258e4ab152c085aceaf75, type: 3}
     - target: {fileID: 7284244987324578676, guid: 7b3d853df0d8a34449a69733e9b5ea21, type: 3}
       propertyPath: m_Name
       value: Player
@@ -698,6 +702,10 @@ PrefabInstance:
     - target: {fileID: 7284244987324578678, guid: 7b3d853df0d8a34449a69733e9b5ea21, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7284244987324578679, guid: 7b3d853df0d8a34449a69733e9b5ea21, type: 3}
+      propertyPath: initialMoveSpeed
+      value: 0.075
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b3d853df0d8a34449a69733e9b5ea21, type: 3}
