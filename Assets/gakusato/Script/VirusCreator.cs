@@ -20,6 +20,8 @@ public class VirusCreator : MonoBehaviour
     [SerializeField] float createTime;
     //SetActive(false)にしたオブジェクトを整理するための親オブジェクト
     [SerializeField] Transform trashParent;
+    [SerializeField] int minVirusCreateCount;
+    [SerializeField] int maxVirusCreateCount;
     public Transform TrashParent
     {
         get { return trashParent; }
@@ -32,13 +34,16 @@ public class VirusCreator : MonoBehaviour
     Vector2 diffVector;
     Vector2 minCameraPosition;
     Vector2 maxCameraPosition;
-    float[] addVector = { -6, 6 };
+    float[] addVector = { -10, 10 };
     //発生させる範囲の幅
     [SerializeField] Vector2 farDistanceRange;
 
     // Start is called before the first frame update
     void Start()
     {
+        //スタート時にウイルスを発生させるため
+        currentTime = createTime;
+
         minCameraPosition = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         maxCameraPosition = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
     }
@@ -50,7 +55,7 @@ public class VirusCreator : MonoBehaviour
         currentTime += Time.deltaTime;
         if (currentTime > createTime)
         {
-            createCount = Random.Range(6, 10);
+            createCount = Random.Range(minVirusCreateCount, maxVirusCreateCount);
             StartCoroutine(CreateVirus(createCount));
             currentTime = 0;
         }
@@ -73,12 +78,12 @@ public class VirusCreator : MonoBehaviour
             var x = Mathf.Abs(diffVector.x);
             var y = Mathf.Abs(diffVector.y);
 
-            if (x < 3f)
+            if (x < 5f)
             {
                 var indexX = Random.Range(0, 1);
                 createPosition.x += addVector[indexX];
             }
-            else if (y < 3f)
+            else if (y < 5f)
             {
                 var indexY = Random.Range(0, 1);
                 createPosition.y += addVector[indexY];

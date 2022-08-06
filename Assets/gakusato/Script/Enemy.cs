@@ -28,6 +28,10 @@ public class Enemy : MonoBehaviour
     //前のフレームとの位置の差
     Vector2 diffPos;
 
+    bool isChangeStatus = false;
+
+    float currentTime;
+
     //ウイルスの状態管理（いらないかも？）
     public enum VirusState
     {
@@ -61,7 +65,6 @@ public class Enemy : MonoBehaviour
             currentVirusState = VirusState.Dead;
             // deadEffect.gameObject.SetActive(true);
             AudioSource.PlayClipAtPoint(deadAudio, transform.position);
-
             //Destroyは重くなるのでsetActiveを使用
             gameObject.SetActive(false);
         }
@@ -70,6 +73,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         targetObject = ServiceLocator.i.virusCreator.TargetPosition;
         currentVirusState = VirusState.Alive;
         prePosition = transform.position;
@@ -81,8 +85,16 @@ public class Enemy : MonoBehaviour
         if (ServiceLocator.i.charaManager.currentCharaState == CharaManager.CharaState.Dead) gameObject.SetActive(false);
         //SetActiveで無効にしているのでいらないかも？
         if (currentVirusState == VirusState.Dead) return;
+
+        currentTime += Time.deltaTime;
+        if (currentTime >= 10 && !isChangeStatus) ChangeVirusStatus();
         VirusMove();
 
+    }
+    void ChangeVirusStatus()
+    {
+        speed += 1.5f;
+        isChangeStatus = true;
     }
 
     /// <summary>
