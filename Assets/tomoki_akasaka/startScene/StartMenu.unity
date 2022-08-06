@@ -183,8 +183,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
-    m_FontSize: 25
+    m_Font: {fileID: 12800000, guid: c61df53e80ff890408edc515cf6bdc01, type: 3}
+    m_FontSize: 0
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Virus Buster
+  m_Text: "\u30A6\u30A4\u30EB\u30B9\u30FB\u30D0\u30B9\u30BF\u30FC"
 --- !u!222 &26988848
 CanvasRenderer:
   m_ObjectHideFlags: 0

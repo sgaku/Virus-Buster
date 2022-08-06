@@ -479,6 +479,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1365690922, guid: 8a6b5a9f3f1de454286c1532aa170370, type: 3}
+      propertyPath: m_Text
+      value: "\u6700\u9AD8\u30B9\u30B3\u30A2"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365690922, guid: 8a6b5a9f3f1de454286c1532aa170370, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: c61df53e80ff890408edc515cf6bdc01, type: 3}
+    - target: {fileID: 1365690922, guid: 8a6b5a9f3f1de454286c1532aa170370, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365690922, guid: 8a6b5a9f3f1de454286c1532aa170370, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645737098742008358, guid: 8a6b5a9f3f1de454286c1532aa170370, type: 3}
+      propertyPath: m_Text
+      value: "\u6BBA\u83CC\u6570:"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645737098742008358, guid: 8a6b5a9f3f1de454286c1532aa170370, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: c61df53e80ff890408edc515cf6bdc01, type: 3}
+    - target: {fileID: 5231808964725886445, guid: 8a6b5a9f3f1de454286c1532aa170370, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231808964725886445, guid: 8a6b5a9f3f1de454286c1532aa170370, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 5996912943106656741, guid: 8a6b5a9f3f1de454286c1532aa170370, type: 3}
       propertyPath: m_Name
       value: Canvas
