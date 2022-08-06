@@ -10,10 +10,11 @@ public class ScoreManager : MonoBehaviour
     private Text HighScoreText;//これまでのハイスコアを表示する
 
     private int TotalScore = 0;//スコアの合計
-    private int EndScore;//プレイヤーが死んだときのスコア
+    [HideInInspector] public int EndScore;//プレイヤーが死んだときのスコア
     private int HighScore = 0;//前回までのハイスコア
 
     GameObject ScoreRanking;//ランキングのゲームオブジェクトを取得
+    private GameObject ResultCanvas;//リザルトキャンバス
 
     public static ScoreManager instance;//instanceで呼び出す用
     
@@ -28,16 +29,14 @@ public class ScoreManager : MonoBehaviour
     // 初期化時の処理
     void Start()
     {
-
-
-
-
-
-
         int newHighScore;
         // スコアのロード
         newHighScore = PlayerPrefs.GetInt("SCORE1",1000);
         Debug.Log("hoge" + newHighScore);
+        HighScore = newHighScore;
+
+        ResultCanvas = GameObject.Find("ResultCanvas");//リザルトキャンバスを無効化
+        ResultCanvas.SetActive(false);
     }
     // 削除時の処理
     
@@ -47,10 +46,6 @@ public class ScoreManager : MonoBehaviour
     {
         ScoreText = GameObject.Find("ScoreText").GetComponent<Text>();//スコアテキストを名前で取得
         HighScoreText = GameObject.Find("HighScoreText").GetComponent<Text>();//名前で取得
-      
-
-
-
         ScoreText.text = "Score:" + TotalScore.ToString();//スコアを更新、表示
         HighScoreText.text = "HighScore:" + HighScore;//ハイスコアの表示
         
@@ -66,11 +61,13 @@ public class ScoreManager : MonoBehaviour
         {
             HighScore = EndScore;//ハイスコアを更新
         }
-    }
-    void OnDestroy()
-    {
         // スコアを保存
         PlayerPrefs.SetInt("SCORE1", HighScore);
         PlayerPrefs.Save();
+        ResultCanvas.SetActive(true);//リザルトキャンバスを召喚
+    }
+    void OnDestroy()
+    {
+        
     }
 }
