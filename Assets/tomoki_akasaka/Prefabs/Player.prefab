@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7284244987324578678}
   - component: {fileID: 7284244987324578679}
   - component: {fileID: 930826341}
-  - component: {fileID: 930826342}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -36,6 +35,7 @@ Transform:
   - {fileID: 2398210534391754862}
   - {fileID: 1926616307458508769}
   - {fileID: 975714679818129674}
+  - {fileID: 5141609181623034995}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fdc11f6b727a7a4780182a5b4bf6ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deadParent: {fileID: 0}
   speed: 0.05
   fireRate: 0.3
   nowObj: {fileID: 0}
@@ -61,7 +62,9 @@ MonoBehaviour:
   bullet: {fileID: 6965845925124253439, guid: 3694c40dee0043c45ba0f5681303708f, type: 3}
   diffCamera: {x: 0, y: 0, z: 0}
   camera: {fileID: 0}
-  specialSkill: {fileID: 0}
+  specialSkill: {fileID: 3309450067252347871}
+  initialMoveSpeed: 0
+  initialBulletPower: 0
 --- !u!82 &930826341
 AudioSource:
   m_ObjectHideFlags: 0
@@ -74,7 +77,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.54
+  m_Volume: 0.22
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -158,23 +161,83 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &930826342
-MonoBehaviour:
+--- !u!1001 &6528680051982165316
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7284244987324578678}
+    m_Modifications:
+    - target: {fileID: 1796562479310709163, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
+      propertyPath: m_Name
+      value: SpecialSkil
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143763611906228535, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143763611906228535, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.26287618
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143763611906228535, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.098630525
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143763611906228535, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.009965792
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143763611906228535, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143763611906228535, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143763611906228535, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143763611906228535, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143763611906228535, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143763611906228535, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143763611906228535, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8608349934211262107, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
+      propertyPath: chargeBullet
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
+--- !u!114 &3309450067252347871 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8608349934211262107, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
+  m_PrefabInstance: {fileID: 6528680051982165316}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7284244987324578676}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edc151b398663794faf3b69f56455f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargeBullet: {fileID: 0}
-  skill1: 0
-  chargeTime: 0
-  chargeAudio: {fileID: 0}
-  chargeShotAudio: {fileID: 0}
+--- !u!4 &5141609181623034995 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2143763611906228535, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
+  m_PrefabInstance: {fileID: 6528680051982165316}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7284244985692493052
 PrefabInstance:
   m_ObjectHideFlags: 0
