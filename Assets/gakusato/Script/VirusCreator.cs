@@ -12,7 +12,7 @@ public class VirusCreator : MonoBehaviour
         private set { targetPosition = value; }
     }
     //ウイルス生成の際の親オブジェクト
-    [SerializeField] Transform virusParent;
+   
 
     //ウイルスの種類を格納
     [SerializeField] List<GameObject> virusList = new List<GameObject>();
@@ -23,7 +23,7 @@ public class VirusCreator : MonoBehaviour
     Vector2 farMaxPosition;
     Vector2 farMinPosition;
     Vector2 diffVector;
-    float[] addVector = { -6, 6};
+    float[] addVector = { -6, 6 };
     //発生させる範囲の幅
     [SerializeField] Vector2 farDistanceRange;
 
@@ -36,6 +36,7 @@ public class VirusCreator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ServiceLocator.i.charaManager.currentCharaState == CharaManager.CharaState.Dead) return;
         currentTime += Time.deltaTime;
         if (currentTime > createTime)
         {
@@ -71,7 +72,7 @@ public class VirusCreator : MonoBehaviour
                 createPosition.y += addVector[indexY];
             }
 
-            Instantiate(virusList[index], createPosition, Quaternion.identity, virusParent);
+            Instantiate(virusList[index], createPosition, Quaternion.identity, transform);
             yield return null;
         }
     }

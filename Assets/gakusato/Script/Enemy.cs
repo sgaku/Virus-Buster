@@ -7,7 +7,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     //敵のスコアをつける？？
-    // public int score;
+    public int score;
 
     //追跡するターゲット
     Transform targetObject;
@@ -35,13 +35,20 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.name);
+        // Debug.Log(other.gameObject.name);
         //死亡判定
         if (other.gameObject.CompareTag("Bullet"))
         {
             //当たってきた球も消す
             other.gameObject.SetActive(false);
-
+            ServiceLocator.i.scoreManager.ScoreCount(score);
+            currentVirusState = VirusState.Dead;
+            //Destroyは重くなるのでsetActiveを使用
+            gameObject.SetActive(false);
+        }
+        else if (other.CompareTag("ChargeBullet"))
+        {
+            ServiceLocator.i.scoreManager.ScoreCount(score);
             currentVirusState = VirusState.Dead;
             //Destroyは重くなるのでsetActiveを使用
             gameObject.SetActive(false);
@@ -59,6 +66,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ServiceLocator.i.charaManager.currentCharaState == CharaManager.CharaState.Dead) gameObject.SetActive(false);
         //SetActiveで無効にしているのでいらないかも？
         if (currentVirusState == VirusState.Dead) return;
         VirusMove();

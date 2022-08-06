@@ -8,6 +8,7 @@ public class ServiceLocator : MonoBehaviour
 {
     public VirusCreator virusCreator;
     public CharaManager charaManager;
+    public ScoreManager scoreManager;
     public static ServiceLocator i;
 
     void Awake()
