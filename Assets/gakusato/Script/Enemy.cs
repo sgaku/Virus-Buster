@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] Rigidbody2D rigidBody2d;
     //移動スピード
     [SerializeField] float speed;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip deadAudio;
     //移動する際の角度
     float angle;
     //前フレームの位置情報
@@ -39,17 +41,21 @@ public class Enemy : MonoBehaviour
         //死亡判定
         if (other.gameObject.CompareTag("Bullet"))
         {
+            
             //当たってきた球も消す
             other.gameObject.SetActive(false);
             ServiceLocator.i.scoreManager.ScoreCount(score);
             currentVirusState = VirusState.Dead;
+            AudioSource.PlayClipAtPoint(deadAudio, transform.position);
             //Destroyは重くなるのでsetActiveを使用
             gameObject.SetActive(false);
         }
         else if (other.CompareTag("ChargeBullet"))
         {
+            
             ServiceLocator.i.scoreManager.ScoreCount(score);
             currentVirusState = VirusState.Dead;
+            AudioSource.PlayClipAtPoint(deadAudio, transform.position);
             //Destroyは重くなるのでsetActiveを使用
             gameObject.SetActive(false);
         }
