@@ -65,11 +65,11 @@ MonoBehaviour:
   specialSkill: {fileID: 3309450067252347871}
   stopFlag: 0
   initialFireRate: 1
-  initialMoveSpeed: 10000
+  initialMoveSpeed: 10
   initialBulletPower: 1
   fireRateUnit: 0.15
   bulletPowerUnit: 1
-  speedUnit: 0.05
+  speedUnit: 1
 --- !u!82 &930826341
 AudioSource:
   m_ObjectHideFlags: 0
@@ -224,7 +224,7 @@ PrefabInstance:
     - target: {fileID: 8608349934211262107, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
       propertyPath: chargeBullet
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5134302112313211409, guid: bf42adc1eca258e4ab152c085aceaf75, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d91dab2ab856d5d439054ef6e17dbbd9, type: 3}
 --- !u!114 &3309450067252347871 stripped

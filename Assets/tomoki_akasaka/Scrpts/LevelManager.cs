@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         int scorePoint = PlayerPrefs.GetInt("SCORE2", a);
         totalScoreText.text = scorePoint.ToString();
         if(expTable.Length <= PlayerPrefs.GetInt("FireRateLevel", 0))
@@ -210,8 +211,8 @@ public class LevelManager : MonoBehaviour
 
     public void LevelUpFireRate()
     {
-        float nowFireRate = PlayerPrefs.GetFloat("FireRate", 0.3f);
-        PlayerPrefs.SetFloat("FireRate", nowFireRate - 0.05f);
+        //float nowFireRate = PlayerPrefs.GetFloat("FireRate", 0.3f);
+        //PlayerPrefs.SetFloat("FireRate", nowFireRate - 0.05f);
         int nowLevel = PlayerPrefs.GetInt("FireRateLevel", 0);
         PlayerPrefs.SetInt("FireRateLevel", nowLevel+1);
         rateLevelText.text = "LV." + (nowLevel + 1).ToString();
@@ -220,10 +221,9 @@ public class LevelManager : MonoBehaviour
             rateLevelText.text = "MAX";
             return;
         }
-        PlayerPrefs.SetInt("FireRatePoint", expTable[nowLevel+1]);
+        //PlayerPrefs.SetInt("FireRatePoint", expTable[nowLevel+1]);
 
         rateLevelPointText.text = expTable[nowLevel+1].ToString();
-        
     }
     
     public void LevelUpMoveSpeed()
@@ -240,7 +240,7 @@ public class LevelManager : MonoBehaviour
             speedLevelText.text = "MAX";
             return;
         }
-        PlayerPrefs.SetInt("MoveSpeedPoint", expTable[nowLevel+1]);
+        //PlayerPrefs.SetInt("MoveSpeedPoint", expTable[nowLevel+1]);
         speedLevelPointText.text = expTable[nowLevel+1].ToString();
 
     }
@@ -259,7 +259,7 @@ public class LevelManager : MonoBehaviour
             speedLevelText.text = "MAX";
             return;
         }
-        PlayerPrefs.SetInt("BulletPowerPoint", expTable[nowLevel+1]);
+        //PlayerPrefs.SetInt("BulletPowerPoint", expTable[nowLevel+1]);
 
         powerLevelPointText.text = expTable[nowLevel+1].ToString();
     }
@@ -277,7 +277,7 @@ public class LevelManager : MonoBehaviour
             skillLevelText.text = "MAX";
             return;
         }
-        PlayerPrefs.SetInt("skillPoint", expTableSkill[nowLevel+1]);
+        //PlayerPrefs.SetInt("skillPoint", expTableSkill[nowLevel+1]);
 
         skillLevelPointText.text = expTableSkill[nowLevel+1].ToString();
 
