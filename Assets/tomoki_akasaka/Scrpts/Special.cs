@@ -27,7 +27,7 @@ public class Special : MonoBehaviour
         
     }
 
-    private GameObject nowObj;
+    public GameObject nowObj;
     public void chargeShot(GameObject obj)
     {
         Debug.Log("chargeShot");
@@ -48,6 +48,7 @@ public class Special : MonoBehaviour
     
     public IEnumerator chargeShotCoroutine()
     {
+
         Debug.Log("a");
 
         Debug.Log("aa");
@@ -62,6 +63,7 @@ public class Special : MonoBehaviour
         audioSource.Stop();
         bullet.transform.parent = null;
         audioSource.PlayOneShot(chargeShotAudio);
+        
 
         
 

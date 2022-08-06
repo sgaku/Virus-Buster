@@ -83,7 +83,7 @@ public class CharaManager : MonoBehaviour
 		}
 
         //rlfleupオブジェクトだけ有効にして表示
-        nowObj = gameObject.transform.Find("rifle_down").gameObject;
+        nowObj = gameObject.transform.Find("rifle_up").gameObject;
         nowObj.SetActive(true);
 
         //コルーチンで弾の生成を開始
@@ -93,14 +93,18 @@ public class CharaManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //１入力で必殺技（チャージショット）
-        if(Input.GetKey(KeyCode.Alpha1))
-        {
-            specialSkill.chargeShot(nowObj);
-        }
+
 
         //移動処理
         Move();
+
+        //１入力で必殺技（チャージショット）
+        if(Input.GetKey(KeyCode.Alpha1) && specialSkill.skill1 == true)
+        {
+            specialSkill.skill1 = false;
+            specialSkill.nowObj = nowObj;
+            specialSkill.StartCoroutine("chargeShot");
+        }
     }
 
     void Move()
