@@ -43,6 +43,8 @@ public class CharaManager : MonoBehaviour
     public GameObject camera;
     public Special specialSkill;
 
+    public bool  stopFlag;
+
     [SerializeField] float initialFireRate;
 
 
@@ -62,12 +64,13 @@ public class CharaManager : MonoBehaviour
         currentCharaState = CharaState.Alive;
 
         //スキルレベルに応じてスキルの使用を許可
-        float skillLevel = PlayerPrefs.GetFloat("SkillLevel", 0);
+        int skillLevel = PlayerPrefs.GetInt("SkillLevel", 0);
         if (skillLevel >= 1)
         {
             specialSkill.skill1 = true;
         }
-        else{
+        else
+        {
             specialSkill.skill1 = false;
         }
 
@@ -100,8 +103,10 @@ public class CharaManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
+        if(stopFlag)
+        {
+            return;
+        }
         //移動処理
         Move();
 
@@ -110,7 +115,7 @@ public class CharaManager : MonoBehaviour
         {
             specialSkill.skill1 = false;
             specialSkill.nowObj = nowObj;
-            specialSkill.StartCoroutine("chargeShot");
+            specialSkill.StartCoroutine("chargeShotCoroutine");
         }
     }
 

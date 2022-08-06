@@ -56,6 +56,8 @@ public class Special : MonoBehaviour
         GameObject bullet = Instantiate(chargeBullet, pos, nowObj.transform.rotation);
         audioSource.PlayOneShot(chargeAudio);
         bullet.transform.SetParent(nowObj.transform);
+        ServiceLocator.i.charaManager.StopCoroutine("Shoot");
+        ServiceLocator.i.charaManager.stopFlag = true;
         yield return new WaitForSeconds(chargeTime);
 
         var shotForward = (pos -nowObj.transform.Find("muzzleflash_rifle").gameObject.transform.position).normalized;
@@ -63,6 +65,9 @@ public class Special : MonoBehaviour
         audioSource.Stop();
         bullet.transform.parent = null;
         audioSource.PlayOneShot(chargeShotAudio);
+        ServiceLocator.i.charaManager.StartCoroutine("Shoot");
+        ServiceLocator.i.charaManager.stopFlag = false;
+
         
 
         

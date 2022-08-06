@@ -63,12 +63,13 @@ MonoBehaviour:
   diffCamera: {x: 0, y: 0, z: 0}
   camera: {fileID: 0}
   specialSkill: {fileID: 3309450067252347871}
-  initialFireRate: 0.5
-  initialMoveSpeed: 0.05
+  stopFlag: 0
+  initialFireRate: 1
+  initialMoveSpeed: 0.01
   initialBulletPower: 1
-  fireRateUnit: 0.5
+  fireRateUnit: 0.15
   bulletPowerUnit: 1
-  speedUnit: 0.2
+  speedUnit: 0.05
 --- !u!82 &930826341
 AudioSource:
   m_ObjectHideFlags: 0
