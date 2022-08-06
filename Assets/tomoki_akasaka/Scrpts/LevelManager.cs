@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Text totalScoreText;
     [SerializeField] private int a;
     [SerializeField] private AudioClip levelUpAudio;
+    [SerializeField] private GameObject skillGetPanel;
     public AudioSource audio;
 
 
@@ -213,6 +214,8 @@ public class LevelManager : MonoBehaviour
 
     public void LevelUpFireRate()
     {
+        audio.PlayOneShot(levelUpAudio);
+
         //float nowFireRate = PlayerPrefs.GetFloat("FireRate", 0.3f);
         //PlayerPrefs.SetFloat("FireRate", nowFireRate - 0.05f);
         int nowLevel = PlayerPrefs.GetInt("FireRateLevel", 0);
@@ -224,13 +227,14 @@ public class LevelManager : MonoBehaviour
             return;
         }
         //PlayerPrefs.SetInt("FireRatePoint", expTable[nowLevel+1]);
-        audio.PlayOneShot(levelUpAudio);
 
         rateLevelPointText.text = expTable[nowLevel+1].ToString();
     }
     
     public void LevelUpMoveSpeed()
     {
+        audio.PlayOneShot(levelUpAudio);
+
         float nowMoveSpeed = PlayerPrefs.GetFloat("MoveSpeed", initMoveSpeed);
         PlayerPrefs.SetFloat("MoveSpeed", nowMoveSpeed + 0.1f);
         int nowLevel = PlayerPrefs.GetInt("MoveSpeedLevel", 0);
@@ -244,7 +248,6 @@ public class LevelManager : MonoBehaviour
             return;
         }
         //PlayerPrefs.SetInt("MoveSpeedPoint", expTable[nowLevel+1]);
-        audio.PlayOneShot(levelUpAudio);
 
         speedLevelPointText.text = expTable[nowLevel+1].ToString();
 
@@ -252,6 +255,8 @@ public class LevelManager : MonoBehaviour
 
     public void LevelUpBulletPower()
     {
+        audio.PlayOneShot(levelUpAudio);
+
         float nowBulletPower = PlayerPrefs.GetFloat("BulletPower", initBulletPower);
         PlayerPrefs.SetFloat("BulletPower", nowBulletPower + 1);
         int nowLevel = PlayerPrefs.GetInt("BulletPowerLevel", 0);
@@ -265,7 +270,6 @@ public class LevelManager : MonoBehaviour
             return;
         }
         //PlayerPrefs.SetInt("BulletPowerPoint", expTable[nowLevel+1]);
-        audio.PlayOneShot(levelUpAudio);
 
 
         powerLevelPointText.text = expTable[nowLevel+1].ToString();
@@ -273,7 +277,12 @@ public class LevelManager : MonoBehaviour
 
     public void LevelUpSkill()
     {
+        audio.PlayOneShot(levelUpAudio);
         float skillLevel = PlayerPrefs.GetFloat("SkillLevel", 0);
+        if(skillLevel == 0)
+        {
+            skillGetPanel.SetActive(true);
+        }
         PlayerPrefs.SetFloat("SkillLevel", skillLevel+1);
         int nowLevel = PlayerPrefs.GetInt("SkillLevel", 0);
         PlayerPrefs.SetInt("SkillLevel", nowLevel+1);
@@ -285,12 +294,18 @@ public class LevelManager : MonoBehaviour
             return;
         }
         //PlayerPrefs.SetInt("skillPoint", expTableSkill[nowLevel+1]);
-        audio.PlayOneShot(levelUpAudio);
 
 
         skillLevelPointText.text = expTableSkill[nowLevel+1].ToString();
 
     }
+
+    public void CloseGetSkillPanel()
+    {
+        skillGetPanel.SetActive(false);
+    }
+
+
 
 
 }
