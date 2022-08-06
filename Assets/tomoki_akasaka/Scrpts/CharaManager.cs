@@ -67,6 +67,9 @@ public class CharaManager : MonoBehaviour
         {
             specialSkill.skill1 = true;
         }
+        else{
+            specialSkill.skill1 = false;
+        }
 
         fireRate = initialFireRate - PlayerPrefs.GetInt("FireRateLevel", 0) * fireRateUnit;
         speed = PlayerPrefs.GetInt("MoveSpeedLevel", 0) * speedUnit + initialMoveSpeed;
