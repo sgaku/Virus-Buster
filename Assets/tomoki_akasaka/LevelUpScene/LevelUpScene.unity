@@ -2244,7 +2244,8 @@ MonoBehaviour:
   initFireRate: 0
   initBulletPower: 0
   pointUnit: 100
-  expTable: 64000000c80000002c01000090010000f4010000
+  expTable: 64000000c8000000
+  expTableSkill: 64000000
   speedLevelText: {fileID: 637506263}
   rateLevelText: {fileID: 1498255498}
   powerLevelText: {fileID: 336363632}

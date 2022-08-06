@@ -139,8 +139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 20
   rigidBody2d: {fileID: 6101978092000299631}
-  speed: 2
-  audioSource: {fileID: -8059632010047440155}
+  speed: 1.5
+  deadEffect: {fileID: 8897793976929715391, guid: fb5f9a0d357f740cebb47d533e993dff, type: 3}
   deadAudio: {fileID: 8300000, guid: 09605bd9b9bf842529c04ed86d7c1920, type: 3}
 --- !u!82 &-8059632010047440155
 AudioSource:
