@@ -43,10 +43,15 @@ public class CharaManager : MonoBehaviour
     public GameObject camera;
     public Special specialSkill;
 
+    [SerializeField] float initialFireRate;
+
+
     [SerializeField] float initialMoveSpeed;
     [SerializeField] float initialBulletPower;
 
-
+    [SerializeField] float fireRateUnit;
+    [SerializeField] float bulletPowerUnit;
+    [SerializeField] float speedUnit;
 
     
 
@@ -61,10 +66,12 @@ public class CharaManager : MonoBehaviour
         if (skillLevel >= 1)
         {
             specialSkill.skill1 = true;
-        } 
-        fireRate = PlayerPrefs.GetFloat("FireRate", 0.3f);
-        speed = PlayerPrefs.GetFloat("MoveSpeed", initialMoveSpeed);
-        float nowBulletPower = PlayerPrefs.GetFloat("MoveSpeed", initialBulletPower);
+        }
+
+        fireRate = initialFireRate - PlayerPrefs.GetInt("FireRateLevel", 0) * fireRateUnit;
+        speed = PlayerPrefs.GetInt("MoveSpeedLevel", 0) * speedUnit + initialMoveSpeed;
+        float nowBulletPower = PlayerPrefs.GetInt("BulletPowerLevel", 0) * bulletPowerUnit + initialBulletPower;
+
 
         audioSource = transform.GetComponent<AudioSource>();
 
