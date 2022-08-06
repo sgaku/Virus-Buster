@@ -301,6 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virusCreator: {fileID: 459721209}
+  charaManager: {fileID: 1375536417}
 --- !u!4 &1223267206
 Transform:
   m_ObjectHideFlags: 0
@@ -321,6 +322,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7284244987324578678, guid: 7b3d853df0d8a34449a69733e9b5ea21, type: 3}
   m_PrefabInstance: {fileID: 1158647393}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1375536417 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7284244987324578679, guid: 7b3d853df0d8a34449a69733e9b5ea21, type: 3}
+  m_PrefabInstance: {fileID: 1158647393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fdc11f6b727a7a4780182a5b4bf6ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1990428662
 GameObject:
   m_ObjectHideFlags: 0
