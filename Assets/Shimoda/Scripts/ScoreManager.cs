@@ -52,7 +52,7 @@ public class ScoreManager : MonoBehaviour
         ScoreText = GameObject.Find("ScoreText").GetComponent<Text>();//スコアテキストを名前で取得
         HighScoreText = GameObject.Find("HighScoreText").GetComponent<Text>();//名前で取得
         KillEnemyText = GameObject.Find("KillEnemyText").GetComponent<Text>();//名前で取得
-        ScoreText.text = "Exp:" + TotalScore.ToString();//スコアを更新、表示
+        ScoreText.text = "Score:" + TotalScore.ToString();//スコアを更新、表示
         HighScoreText.text = "HighScore:" + HighScore;//ハイスコアの表示
         KillEnemyText.text = "Kill:" + TotalKill.ToString();//キル数の表示
     }
