@@ -73,7 +73,6 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         targetObject = ServiceLocator.i.virusCreator.TargetPosition;
         currentVirusState = VirusState.Alive;
         prePosition = transform.position;
@@ -83,13 +82,14 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         if (ServiceLocator.i.charaManager.currentCharaState == CharaManager.CharaState.Dead) gameObject.SetActive(false);
-        //SetActiveで無効にしているのでいらないかも？
-        if (currentVirusState == VirusState.Dead) return;
-
         currentTime += Time.deltaTime;
         if (currentTime >= 10 && !isChangeStatus) ChangeVirusStatus();
-        VirusMove();
+    }
 
+    void FixedUpdate()
+    {
+        if (currentVirusState == VirusState.Dead) return;
+        VirusMove();
     }
     void ChangeVirusStatus()
     {
