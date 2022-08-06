@@ -601,11 +601,11 @@ MonoBehaviour:
   targetPosition: {fileID: 1152903670}
   virusList:
   - {fileID: 1719880784130793843, guid: 217fcbd137c3c4389be8f16e1bee055a, type: 3}
-  - {fileID: 2889767667968070513, guid: 68b52bb2bcc50405a98fd73ce7969dac, type: 3}
-  - {fileID: 1719880784130793843, guid: 217fcbd137c3c4389be8f16e1bee055a, type: 3}
-  createTime: 2
+  createTime: 3
   trashParent: {fileID: 193586092}
-  farDistanceRange: {x: 13, y: 13}
+  minVirusCreateCount: 8
+  maxVirusCreateCount: 12
+  farDistanceRange: {x: 20, y: 20}
 --- !u!4 &966741532
 Transform:
   m_ObjectHideFlags: 0
