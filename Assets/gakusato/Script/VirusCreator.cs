@@ -12,7 +12,7 @@ public class VirusCreator : MonoBehaviour
         private set { targetPosition = value; }
     }
     //ウイルス生成の際の親オブジェクト
-   
+
 
     //ウイルスの種類を格納
     [SerializeField] List<GameObject> virusList = new List<GameObject>();
@@ -23,6 +23,8 @@ public class VirusCreator : MonoBehaviour
     Vector2 farMaxPosition;
     Vector2 farMinPosition;
     Vector2 diffVector;
+    Vector2 minCameraPosition;
+    Vector2 maxCameraPosition;
     float[] addVector = { -6, 6 };
     //発生させる範囲の幅
     [SerializeField] Vector2 farDistanceRange;
@@ -30,7 +32,8 @@ public class VirusCreator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        minCameraPosition = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+        maxCameraPosition = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
     }
 
     // Update is called once per frame
@@ -56,6 +59,8 @@ public class VirusCreator : MonoBehaviour
             farMinPosition = targetVector - farDistanceRange;
             createPosition.y = Random.Range(farMinPosition.y, farMaxPosition.y);
             createPosition.x = Random.Range(farMinPosition.x, farMaxPosition.x);
+
+
             diffVector.x = targetVector.x - createPosition.x;
             diffVector.y = targetVector.y - createPosition.y;
             var x = Mathf.Abs(diffVector.x);
@@ -72,7 +77,12 @@ public class VirusCreator : MonoBehaviour
                 createPosition.y += addVector[indexY];
             }
 
-            Instantiate(virusList[index], createPosition, Quaternion.identity, transform);
+            if (createPosition.x < maxCameraPosition.x && createPosition.x > minCameraPosition.x
+                && createPosition.y < maxCameraPosition.y && createPosition.y < minCameraPosition.y)
+            {
+                Debug.Log("instance");
+                Instantiate(virusList[index], createPosition, Quaternion.identity, transform);
+            }
             yield return null;
         }
     }
