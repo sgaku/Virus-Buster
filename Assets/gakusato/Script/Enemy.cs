@@ -7,7 +7,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     //敵のスコアをつける？？
-    // public int score;
+    public int score;
 
     //追跡するターゲット
     Transform targetObject;
@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
         {
             //当たってきた球も消す
             other.gameObject.SetActive(false);
-
+            ServiceLocator.i.scoreManager.ScoreCount(score);
             currentVirusState = VirusState.Dead;
             //Destroyは重くなるのでsetActiveを使用
             gameObject.SetActive(false);

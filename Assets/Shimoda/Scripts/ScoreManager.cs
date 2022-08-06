@@ -1,73 +1,74 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;  // ’Ç‰Á‚µ‚Ü‚µ‚å‚¤
+using UnityEngine.UI;  // ï¿½Ç‰ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½å‚¤
 
 public class ScoreManager : MonoBehaviour
 
 {
-    private Text ScoreText;//ƒXƒRƒA‚ğ•\¦‚·‚éƒeƒLƒXƒg
-    private Text HighScoreText;//‚±‚ê‚Ü‚Å‚ÌƒnƒCƒXƒRƒA‚ğ•\¦‚·‚é
+    private Text ScoreText;//ï¿½Xï¿½Rï¿½Aï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½eï¿½Lï¿½Xï¿½g
+    private Text HighScoreText;//ï¿½ï¿½ï¿½ï¿½Ü‚Å‚Ìƒnï¿½Cï¿½Xï¿½Rï¿½Aï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-    private int TotalScore = 0;//ƒXƒRƒA‚Ì‡Œv
-    [HideInInspector] public int EndScore;//ƒvƒŒƒCƒ„[‚ª€‚ñ‚¾‚Æ‚«‚ÌƒXƒRƒA
-    private int HighScore = 0;//‘O‰ñ‚Ü‚Å‚ÌƒnƒCƒXƒRƒA
+    private int TotalScore = 0;//ï¿½Xï¿½Rï¿½Aï¿½Ìï¿½ï¿½v
+    [HideInInspector] public int EndScore;//ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ñ‚¾‚Æ‚ï¿½ï¿½ÌƒXï¿½Rï¿½A
+    private int HighScore = 0;//ï¿½Oï¿½ï¿½Ü‚Å‚Ìƒnï¿½Cï¿½Xï¿½Rï¿½A
 
-    GameObject ScoreRanking;//ƒ‰ƒ“ƒLƒ“ƒO‚ÌƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ğæ“¾
-    private GameObject ResultCanvas;//ƒŠƒUƒ‹ƒgƒLƒƒƒ“ƒoƒX
+    GameObject ScoreRanking;//ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½ÌƒQï¿½[ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½æ“¾
+    private GameObject ResultCanvas;//ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½gï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½oï¿½X
 
-    public static ScoreManager instance;//instance‚ÅŒÄ‚Ño‚·—p
-    
+    public static ScoreManager instance;//instanceï¿½ÅŒÄ‚Ñoï¿½ï¿½ï¿½p
 
-    public void Awake()//ŠO‚©‚çŒÄ‚Ño‚¹‚é‚æ‚¤‚É
+
+    public void Awake()//ï¿½Oï¿½ï¿½ï¿½ï¿½Ä‚Ñoï¿½ï¿½ï¿½ï¿½æ‚¤ï¿½ï¿½
     {
         if (instance == null)
         {
             instance = this;
         }
     }
-    // ‰Šú‰»‚Ìˆ—
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
     void Start()
     {
         int newHighScore;
-        // ƒXƒRƒA‚Ìƒ[ƒh
-        newHighScore = PlayerPrefs.GetInt("SCORE1",1000);
+        // ï¿½Xï¿½Rï¿½Aï¿½Ìƒï¿½ï¿½[ï¿½h
+        newHighScore = PlayerPrefs.GetInt("SCORE1", 1000);
         Debug.Log("hoge" + newHighScore);
         HighScore = newHighScore;
 
-        ResultCanvas = GameObject.Find("ResultCanvas");//ƒŠƒUƒ‹ƒgƒLƒƒƒ“ƒoƒX‚ğ–³Œø‰»
-        ResultCanvas.SetActive(false);
+        // ResultCanvas = GameObject.Find("ResultCanvas");//ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½gï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½oï¿½Xï¿½ğ–³Œï¿½ï¿½ï¿½
+        // ResultCanvas.SetActive(false);
     }
-    // íœ‚Ìˆ—
-    
+    // ï¿½íœï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 
-    // XV
+
+    // ï¿½Xï¿½V
     void Update()
     {
-        ScoreText = GameObject.Find("ScoreText").GetComponent<Text>();//ƒXƒRƒAƒeƒLƒXƒg‚ğ–¼‘O‚Åæ“¾
-        HighScoreText = GameObject.Find("HighScoreText").GetComponent<Text>();//–¼‘O‚Åæ“¾
-        ScoreText.text = "Score:" + TotalScore.ToString();//ƒXƒRƒA‚ğXVA•\¦
-        HighScoreText.text = "HighScore:" + HighScore;//ƒnƒCƒXƒRƒA‚Ì•\¦
-        
+        Debug.Log(TotalScore);
+        // ScoreText = GameObject.Find("ScoreText").GetComponent<Text>();//ï¿½Xï¿½Rï¿½Aï¿½eï¿½Lï¿½Xï¿½gï¿½ğ–¼‘Oï¿½Åæ“¾
+        // HighScoreText = GameObject.Find("HighScoreText").GetComponent<Text>();//ï¿½ï¿½ï¿½Oï¿½Åæ“¾
+        // ScoreText.text = "Score:" + TotalScore.ToString();//ï¿½Xï¿½Rï¿½Aï¿½ï¿½ï¿½Xï¿½Vï¿½Aï¿½\ï¿½ï¿½
+        // HighScoreText.text = "HighScore:" + HighScore;//ï¿½nï¿½Cï¿½Xï¿½Rï¿½Aï¿½Ì•\ï¿½ï¿½
+
     }
-    public void ScoreCount(int e)//ƒXƒRƒA‰ÁZ‚Ìƒƒ\ƒbƒh
+    public void ScoreCount(int e)//ï¿½Xï¿½Rï¿½Aï¿½ï¿½ï¿½Zï¿½Ìƒï¿½ï¿½\ï¿½bï¿½h
     {
-        TotalScore += e;//ˆø”“ü‚ê‚ê‚ÎƒXƒRƒA‰ÁZ‚Å‚«‚é
+        TotalScore += e;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎƒXï¿½Rï¿½Aï¿½ï¿½ï¿½Zï¿½Å‚ï¿½ï¿½ï¿½
     }
-    public void PlayerDeath()//ƒvƒŒƒCƒ„[‚ª€‚ñ‚¾z‚ç
+    public void PlayerDeath()//ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½zï¿½ï¿½
     {
-        EndScore = TotalScore;//ÅIƒXƒRƒA‚ğŠi”[
-        if (EndScore >= HighScore)//¡‰ñ‚ÆƒnƒCƒXƒRƒA‚ğ”ä‚×‚é
+        EndScore = TotalScore;//ï¿½ÅIï¿½Xï¿½Rï¿½Aï¿½ï¿½ï¿½iï¿½[
+        if (EndScore >= HighScore)//ï¿½ï¿½ï¿½ï¿½Æƒnï¿½Cï¿½Xï¿½Rï¿½Aï¿½ï¿½ï¿½×‚ï¿½
         {
-            HighScore = EndScore;//ƒnƒCƒXƒRƒA‚ğXV
+            HighScore = EndScore;//ï¿½nï¿½Cï¿½Xï¿½Rï¿½Aï¿½ï¿½ï¿½Xï¿½V
         }
-        // ƒXƒRƒA‚ğ•Û‘¶
+        // ï¿½Xï¿½Rï¿½Aï¿½ï¿½Û‘ï¿½
         PlayerPrefs.SetInt("SCORE1", HighScore);
         PlayerPrefs.Save();
-        ResultCanvas.SetActive(true);//ƒŠƒUƒ‹ƒgƒLƒƒƒ“ƒoƒX‚ğ¢Š«
+        ResultCanvas.SetActive(true);//ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½gï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½oï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
     void OnDestroy()
     {
-        
+
     }
 }
