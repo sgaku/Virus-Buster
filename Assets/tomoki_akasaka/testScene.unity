@@ -409,10 +409,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 42205803, guid: 7b3d853df0d8a34449a69733e9b5ea21, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3309450067252347871, guid: 7b3d853df0d8a34449a69733e9b5ea21, type: 3}
       propertyPath: chargeBullet
       value: 
