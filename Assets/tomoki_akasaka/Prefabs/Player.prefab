@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deadParent: {fileID: 0}
-  speed: 0.05
+  speed: 10000
   fireRate: 0.3
   nowObj: {fileID: 0}
   shootAudio: {fileID: 8300000, guid: ef833599274ed2e48a9ff23d5be0acf1, type: 3}
@@ -65,7 +65,7 @@ MonoBehaviour:
   specialSkill: {fileID: 3309450067252347871}
   stopFlag: 0
   initialFireRate: 1
-  initialMoveSpeed: 0.01
+  initialMoveSpeed: 10000
   initialBulletPower: 1
   fireRateUnit: 0.15
   bulletPowerUnit: 1

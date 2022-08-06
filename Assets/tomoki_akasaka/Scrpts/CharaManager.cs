@@ -141,11 +141,13 @@ public class CharaManager : MonoBehaviour
 
 
         Vector2 position = transform.position;
+        float speed_temp = speed * Time.deltaTime;
+        Debug.Log(Time.deltaTime);
 
 
         if (Input.GetKey("left") || Input.GetKey((KeyCode.A)))
         {
-            position.x -= speed;
+            position.x -= speed_temp;
 
             /*
             if(nowObj.name != "rifle_left")
@@ -158,7 +160,7 @@ public class CharaManager : MonoBehaviour
         }
         else if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
         {
-            position.x += speed;
+            position.x += speed_temp;
             /*
             if(nowObj.name != "rifle_right")
             {
@@ -171,7 +173,7 @@ public class CharaManager : MonoBehaviour
         }
         else if (Input.GetKey("up") || Input.GetKey(KeyCode.W))
         {
-            position.y += speed;
+            position.y += speed_temp;
             /*
             if(nowObj.name != "rifle_up")
             {
@@ -184,7 +186,7 @@ public class CharaManager : MonoBehaviour
         }
         else if (Input.GetKey("down") || Input.GetKey(KeyCode.S))
         {
-            position.y -= speed;
+            position.y -= speed_temp;
             /*
             if(nowObj.name != "rifle_down")
             {

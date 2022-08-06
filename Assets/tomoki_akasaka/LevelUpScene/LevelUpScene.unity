@@ -2255,6 +2255,7 @@ MonoBehaviour:
   powerLevelPointText: {fileID: 1167798508}
   skillLevelPointText: {fileID: 985852461}
   totalScoreText: {fileID: 1805559802}
+  a: 300
 --- !u!4 &1036851978
 Transform:
   m_ObjectHideFlags: 0

@@ -20,12 +20,13 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Text powerLevelPointText;
     [SerializeField] private Text skillLevelPointText;
     [SerializeField] private Text totalScoreText;
+    [SerializeField] private int a;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        int scorePoint = PlayerPrefs.GetInt("SCORE2", 0);
+        int scorePoint = PlayerPrefs.GetInt("SCORE2", a);
         totalScoreText.text = scorePoint.ToString();
         if(expTable.Length <= PlayerPrefs.GetInt("FireRateLevel", 0))
         {
