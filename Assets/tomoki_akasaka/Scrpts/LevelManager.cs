@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.DeleteAll();
+        int scorePoint = PlayerPrefs.GetInt("SCORE2", 100);
     }
 
     // Update is called once per frame
@@ -41,6 +41,8 @@ public class LevelManager : MonoBehaviour
 
             return;
         }
+        PlayerPrefs.SetInt("SCORE2", scorePoint-100);
+
         int fireRatePoint = PlayerPrefs.GetInt("FireRatePoint", 0);
         int fireRateLevel = PlayerPrefs.GetInt("FireRateLevel", 0);
         int nowPoint = int.Parse(rateLevelPointText.text) - pointUnit;
@@ -56,19 +58,22 @@ public class LevelManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("FireRatePoint", fireRatePoint + pointUnit);
         }
-        
     }
 
     public void PointUpMoveSpeed()
     {
-        int scorePoint = PlayerPrefs.GetInt("SCORE2", 0);
+        int scorePoint = PlayerPrefs.GetInt("SCORE2", 100);
         if(scorePoint < 100)
         {
             
             return;
         }
+        PlayerPrefs.SetInt("SCORE2", scorePoint-100);
+
         int moveSpeedPoint = PlayerPrefs.GetInt("MoveSpeedPoint", 0);
         int moveSpeedLevel = PlayerPrefs.GetInt("MoveSpeedLevel", 0);
+        int nowPoint = int.Parse(rateLevelPointText.text) - pointUnit;
+        speedLevelPointText.text = nowPoint.ToString();
         PlayerPrefs.SetInt("MoveSpeedPoint",  moveSpeedPoint + pointUnit);
         if(moveSpeedPoint + pointUnit >= expTable[moveSpeedLevel])
         {
@@ -79,20 +84,23 @@ public class LevelManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("MoveSpeedPoint", moveSpeedPoint + pointUnit);
         }
-        speedLevelPointText.text = (int.Parse(speedLevelPointText.text) - pointUnit).ToString();
 
     }
 
     public void PointUpBulletPower()
     {
-        int scorePoint = PlayerPrefs.GetInt("SCORE2", 0);
+        int scorePoint = PlayerPrefs.GetInt("SCORE2", 100);
         if(scorePoint < 100)
         {
             
             return;
         }
+        PlayerPrefs.SetInt("SCORE2", scorePoint-100);
+
         int bulletPowerPoint = PlayerPrefs.GetInt("BulletPowerPoint", 0);
         int bulletPowerLevel = PlayerPrefs.GetInt("BulletPowerLevel", 0);
+        int nowPoint = int.Parse(rateLevelPointText.text) - pointUnit;
+        powerLevelPointText.text = nowPoint.ToString();
         PlayerPrefs.SetInt("BulletPowerPoint", bulletPowerPoint + pointUnit);
         if(bulletPowerPoint + pointUnit >= expTable[bulletPowerLevel])
         {
@@ -103,20 +111,23 @@ public class LevelManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("bulletPowerPoint", bulletPowerPoint + pointUnit);
         }
-        powerLevelPointText.text = (int.Parse(powerLevelPointText.text) - pointUnit).ToString();
 
     }
 
     public void PointUpSkill()
     {
-        int scorePoint = PlayerPrefs.GetInt("SCORE2", 0);
+        int scorePoint = PlayerPrefs.GetInt("SCORE2", 100);
         if(scorePoint < 100)
         {
             
             return;
         }
+        PlayerPrefs.SetInt("SCORE2", scorePoint-100);
+
         int skillPoint = PlayerPrefs.GetInt("SkillPoint", 0);
         int skillLevel = PlayerPrefs.GetInt("SkillLevel", 0);
+        int nowPoint = int.Parse(rateLevelPointText.text) - pointUnit;
+        skillLevelPointText.text = nowPoint.ToString();
         PlayerPrefs.SetInt("SkillPoint", skillPoint + pointUnit);
         if(skillPoint + pointUnit >= expTable[skillLevel])
         {
@@ -127,7 +138,6 @@ public class LevelManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("skillPoint", skillPoint + pointUnit);
         }
-        skillLevelPointText.text = (int.Parse(skillLevelPointText.text) - pointUnit).ToString();
     }
 
     public void LevelUpFireRate()
@@ -136,8 +146,8 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetFloat("FireRate", nowFireRate - 0.05f);
         int nowFireRateLevel = PlayerPrefs.GetInt("FireRateLevel", 0);
         PlayerPrefs.SetInt("FireRateLevel", nowFireRateLevel+1);
-        rateLevelText.text = "LV." + nowFireRateLevel;
-        rateLevelPointText.text = expTable[nowFireRateLevel].ToString();
+        rateLevelText.text = "LV." + (nowFireRateLevel + 1).ToString();
+        rateLevelPointText.text = expTable[nowFireRateLevel+1].ToString();
         
     }
     
@@ -147,8 +157,8 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetFloat("MoveSpeed", nowMoveSpeed + 0.1f);
         int nowMoveSpeedLevel = PlayerPrefs.GetInt("MoveSpeedLevel", 0);
         PlayerPrefs.SetInt("MoveSpeedLevel", nowMoveSpeedLevel+1);
-        speedLevelText.text = "LV." + nowMoveSpeedLevel;
-        speedLevelPointText.text = expTable[nowMoveSpeedLevel].ToString();
+        speedLevelText.text = "LV." + (nowMoveSpeedLevel+1).ToString();
+        speedLevelPointText.text = expTable[nowMoveSpeedLevel+1].ToString();
     }
 
     public void LevelUpBulletPower()
@@ -157,8 +167,8 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetFloat("BulletPower", nowBulletPower + 1);
         int nowBulletPowerLevel = PlayerPrefs.GetInt("BulletPowerLevel", 0);
         PlayerPrefs.SetInt("BulletPowerLevel", nowBulletPowerLevel+1);
-        powerLevelText.text = "LV." + nowBulletPowerLevel;
-        powerLevelPointText.text = expTable[nowBulletPowerLevel].ToString();
+        powerLevelText.text = "LV." + (nowBulletPowerLevel+1).ToString();
+        powerLevelPointText.text = expTable[nowBulletPowerLevel+1].ToString();
     }
 
     public void LevelUpSkill()
@@ -167,8 +177,8 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetFloat("SkillLevel", skillLevel+1);
         int nowSkillLevel = PlayerPrefs.GetInt("SkillLevel", 0);
         PlayerPrefs.SetInt("SkillLevel", nowSkillLevel+1);
-        skillLevelText.text = "LV." + nowSkillLevel;
-        skillLevelPointText.text = expTable[nowSkillLevel].ToString();
+        skillLevelText.text = "LV." + (nowSkillLevel+1).ToString();
+        skillLevelPointText.text = expTable[nowSkillLevel+1].ToString();
     }
 
 

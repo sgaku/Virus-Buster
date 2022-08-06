@@ -66,10 +66,6 @@ public class CharaManager : MonoBehaviour
         speed = PlayerPrefs.GetFloat("MoveSpeed", initialMoveSpeed);
         float nowBulletPower = PlayerPrefs.GetFloat("MoveSpeed", initialBulletPower);
 
-
-
-
-
         audioSource = transform.GetComponent<AudioSource>();
 
         //子オブジェクトを非アクティブ化
@@ -89,6 +85,7 @@ public class CharaManager : MonoBehaviour
         //コルーチンで弾の生成を開始
          StartCoroutine("Shoot");
     }
+
 
     // Update is called once per frame
     void Update()
@@ -233,6 +230,7 @@ public class CharaManager : MonoBehaviour
         audioSource.PlayOneShot(deadAudio);
         yield return new WaitForSeconds(3);
         downObj.SetActive(false);
+        ScoreManager.instance.PlayerDeath();
 
     }
 }
