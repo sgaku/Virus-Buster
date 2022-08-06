@@ -18,6 +18,13 @@ public class VirusCreator : MonoBehaviour
     [SerializeField] List<GameObject> virusList = new List<GameObject>();
     float currentTime = 0f;
     [SerializeField] float createTime;
+    //SetActive(false)にしたオブジェクトを整理するための親オブジェクト
+    [SerializeField] Transform trashParent;
+    public Transform TrashParent
+    {
+        get { return trashParent; }
+        set { trashParent = value; }
+    }
     float createCount;
     Vector2 createPosition;
     Vector2 farMaxPosition;
