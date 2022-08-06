@@ -201,7 +201,7 @@ public class CharaManager : MonoBehaviour
         Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0,0));
         Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1,1));
         position.x = Mathf.Clamp(position.x, min.x+1.1f, max.x-1.1f);
-        position.y = Mathf.Clamp(position.y, min.y+0.9f, max.y-0.9f);
+        position.y = Mathf.Clamp(position.y, min.y+0.9f, 6.3f);
         transform.position = position;
     }
 
