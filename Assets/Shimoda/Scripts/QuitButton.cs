@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RetryButton : MonoBehaviour
+public class QuitButton : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,8 +16,8 @@ public class RetryButton : MonoBehaviour
     {
         
     }
-    public void Retry()
+    public void Quit()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Map");
     }
 }

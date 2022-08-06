@@ -57,6 +57,7 @@ public class ScoreManager : MonoBehaviour
     public void PlayerDeath()//プレイヤーが死んだzら
     {
         EndScore = TotalScore;//最終スコアを格納
+        Debug.Log("EndScoreは" + EndScore);
         if (EndScore >= HighScore)//今回とハイスコアを比べる
         {
             HighScore = EndScore;//ハイスコアを更新
