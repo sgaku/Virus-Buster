@@ -20,6 +20,7 @@ public class ScoreManager : MonoBehaviour
 
     public static ScoreManager instance;//instanceで呼び出す用
 
+    [SerializeField] GameObject SkillPanel;
 
     public void Awake()//外から呼び出せるように
     {
@@ -42,6 +43,12 @@ public class ScoreManager : MonoBehaviour
         ResultCanvas = GameObject.Find("ResultCanvas");//リザルトキャンバスを無効化
 
         ResultCanvas.SetActive(false);
+
+        if (ServiceLocator.i.charaManager.specialSkill.skill1)
+        {
+            SkillPanel.SetActive(true);
+        }
+        
     }
     // 削除時の処理
 
@@ -52,9 +59,9 @@ public class ScoreManager : MonoBehaviour
         ScoreText = GameObject.Find("ScoreText").GetComponent<Text>();//スコアテキストを名前で取得
         HighScoreText = GameObject.Find("HighScoreText").GetComponent<Text>();//名前で取得
         KillEnemyText = GameObject.Find("KillEnemyText").GetComponent<Text>();//名前で取得
-        ScoreText.text = "Score:" + TotalScore.ToString();//スコアを更新、表示
-        HighScoreText.text = "HighScore:" + HighScore;//ハイスコアの表示
-        KillEnemyText.text = "Kill:" + TotalKill.ToString();//キル数の表示
+        ScoreText.text = "スコア:" + TotalScore.ToString();//スコアを更新、表示
+        HighScoreText.text = "ハイスコア:" + HighScore;//ハイスコアの表示
+        KillEnemyText.text = "倒したウイルス\n" + TotalKill.ToString();//キル数の表示
     }
     public void ScoreCount(int e)//スコア加算のメソッド
     {
