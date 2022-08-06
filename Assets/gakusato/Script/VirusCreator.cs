@@ -77,12 +77,10 @@ public class VirusCreator : MonoBehaviour
                 createPosition.y += addVector[indexY];
             }
 
-            if (createPosition.x < maxCameraPosition.x && createPosition.x > minCameraPosition.x
-                && createPosition.y < maxCameraPosition.y && createPosition.y < minCameraPosition.y)
-            {
-                Debug.Log("instance");
-                Instantiate(virusList[index], createPosition, Quaternion.identity, transform);
-            }
+            if (createPosition.x > maxCameraPosition.x || createPosition.x < minCameraPosition.x) continue;
+            if (createPosition.y > maxCameraPosition.y || createPosition.y < minCameraPosition.y) continue;
+            Instantiate(virusList[index], createPosition, Quaternion.identity, transform);
+
             yield return null;
         }
     }
