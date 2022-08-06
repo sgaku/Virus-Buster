@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 56684
+  controlID: 58096
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 56685
+  controlID: 58097
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 56686
+  controlID: 58098
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 324.4372, y: 197.82605, z: -0.8186367}
     speed: 2
-    m_Value: {x: 324.41617, y: 197.79895, z: -0.8170715}
+    m_Value: {x: 324.4372, y: 197.82605, z: -0.8186367}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Size:
     m_Target: 417.51535
     speed: 2
-    m_Value: 417.35883
+    m_Value: 417.51535
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -604,9 +604,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: be3affff
-      m_LastClickedID: -50498
-      m_ExpandedIDs: 2a0cffff820cffffc63affff9e55ffffbe55ffffc255ffffdc55ffff3e56ffff3a57ffff3273ffffe67afffff67afffffe7affff067bffff7a7bffff82abffffbaacffff06baffff90c6ffff0ac7ffff0cc7ffff64cafffffad3ffffa0faffffcafaffff2cfbffff66ad0000b0ad0000bead0000c0af000038ba000042ba0000acba0000baba0000f2ba0000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 4ae9feffaaedfeff2a0cffff820cffffc63affff9e55ffffbe55ffffc255ffff3e56ffff3a57ffff3273ffffe67afffff67afffffe7affff067bffff7a7bffff82abffffbaacffff06baffff90c6ffff0ac7ffff0cc7ffff64cafffffad3ffffa0faffffcafaffff2cfbffff66ad0000b0ad0000bead0000c0af000038ba000042ba0000acba0000baba0000f2ba0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -698,21 +698,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/tomoki_akasaka/Scrpts
+    - Assets/tomoki_akasaka
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/tomoki_akasaka/Scrpts
+  - Assets/tomoki_akasaka
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\2208_proto_g
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 383}
-    m_SelectedIDs: 5a630000
-    m_LastClickedID: 25434
+    scrollPos: {x: 0, y: 255}
+    m_SelectedIDs: 22630000
+    m_LastClickedID: 25378
     m_ExpandedIDs: 000000001e63000020630000226300002463000026630000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -766,8 +766,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: be3affff
-    m_LastClickedInstanceID: -50498
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000141d010000000000aeed0000d6620000
     m_RenameOverlay:
