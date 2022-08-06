@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int scorePoint = PlayerPrefs.GetInt("SCORE2", 100);
+        int scorePoint = PlayerPrefs.GetInt("SCORE2", 0);
     }
 
     // Update is called once per frame
@@ -35,13 +35,16 @@ public class LevelManager : MonoBehaviour
 
     public void PointUpFireRate()
     {
-        int scorePoint = PlayerPrefs.GetInt("SCORE2", 100);
+        int scorePoint = PlayerPrefs.GetInt("SCORE2", 0);
         if(scorePoint < 100)
         {
 
             return;
         }
-        PlayerPrefs.SetInt("SCORE2", scorePoint-100);
+        scorePoint -= 100;
+        PlayerPrefs.SetInt("SCORE2", scorePoint);
+        totalScoreText.text = scorePoint.ToString();
+
 
         int fireRatePoint = PlayerPrefs.GetInt("FireRatePoint", 0);
         int fireRateLevel = PlayerPrefs.GetInt("FireRateLevel", 0);
@@ -62,13 +65,15 @@ public class LevelManager : MonoBehaviour
 
     public void PointUpMoveSpeed()
     {
-        int scorePoint = PlayerPrefs.GetInt("SCORE2", 100);
+        int scorePoint = PlayerPrefs.GetInt("SCORE2", 0);
         if(scorePoint < 100)
         {
             
             return;
         }
-        PlayerPrefs.SetInt("SCORE2", scorePoint-100);
+        scorePoint -= 100;
+        PlayerPrefs.SetInt("SCORE2", scorePoint);
+        totalScoreText.text = scorePoint.ToString();
 
         int moveSpeedPoint = PlayerPrefs.GetInt("MoveSpeedPoint", 0);
         int moveSpeedLevel = PlayerPrefs.GetInt("MoveSpeedLevel", 0);
@@ -89,13 +94,15 @@ public class LevelManager : MonoBehaviour
 
     public void PointUpBulletPower()
     {
-        int scorePoint = PlayerPrefs.GetInt("SCORE2", 100);
+        int scorePoint = PlayerPrefs.GetInt("SCORE2", 0);
         if(scorePoint < 100)
         {
             
             return;
         }
-        PlayerPrefs.SetInt("SCORE2", scorePoint-100);
+        scorePoint -= 100;
+        PlayerPrefs.SetInt("SCORE2", scorePoint);
+        totalScoreText.text = scorePoint.ToString();
 
         int bulletPowerPoint = PlayerPrefs.GetInt("BulletPowerPoint", 0);
         int bulletPowerLevel = PlayerPrefs.GetInt("BulletPowerLevel", 0);
@@ -111,19 +118,20 @@ public class LevelManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("bulletPowerPoint", bulletPowerPoint + pointUnit);
         }
-
     }
 
     public void PointUpSkill()
     {
-        int scorePoint = PlayerPrefs.GetInt("SCORE2", 100);
+        int scorePoint = PlayerPrefs.GetInt("SCORE2", 0);
         if(scorePoint < 100)
         {
             
             return;
         }
-        PlayerPrefs.SetInt("SCORE2", scorePoint-100);
-
+        scorePoint -= 100;
+        PlayerPrefs.SetInt("SCORE2", scorePoint);
+        totalScoreText.text = scorePoint.ToString();
+        
         int skillPoint = PlayerPrefs.GetInt("SkillPoint", 0);
         int skillLevel = PlayerPrefs.GetInt("SkillLevel", 0);
         int nowPoint = int.Parse(rateLevelPointText.text) - pointUnit;
