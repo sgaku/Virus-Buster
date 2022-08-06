@@ -59,6 +59,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ServiceLocator.i.charaManager.currentCharaState == CharaManager.CharaState.Dead) gameObject.SetActive(false);
         //SetActiveで無効にしているのでいらないかも？
         if (currentVirusState == VirusState.Dead) return;
         VirusMove();

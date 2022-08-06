@@ -9,13 +9,17 @@ public class ResultScore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         resultScore = this.gameObject.GetComponent<Text>();
         resultScore.text = GameObject.Find("ScoreManager").GetComponent<ScoreManager>().EndScore.ToString();
     }
+    
 
     // Update is called once per frame
     void Update()
     {
+
+            resultScore.text = GameObject.Find("ScoreManager").GetComponent<ScoreManager>().EndScore.ToString();//
         
     }
 }
