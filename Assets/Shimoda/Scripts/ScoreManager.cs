@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour
     private GameObject ResultCanvas;//リザルトキャンバス
 
     public static ScoreManager instance;//instanceで呼び出す用
-    
+
 
     public void Awake()//外から呼び出せるように
     {
@@ -31,7 +31,7 @@ public class ScoreManager : MonoBehaviour
     {
         int newHighScore;
         // スコアのロード
-        newHighScore = PlayerPrefs.GetInt("SCORE1",1000);
+        newHighScore = PlayerPrefs.GetInt("SCORE1", 1000);
         Debug.Log("hoge" + newHighScore);
         HighScore = newHighScore;
 
@@ -39,7 +39,7 @@ public class ScoreManager : MonoBehaviour
         ResultCanvas.SetActive(false);
     }
     // 削除時の処理
-    
+
 
     // 更新
     void Update()
@@ -48,7 +48,7 @@ public class ScoreManager : MonoBehaviour
         HighScoreText = GameObject.Find("HighScoreText").GetComponent<Text>();//名前で取得
         ScoreText.text = "Score:" + TotalScore.ToString();//スコアを更新、表示
         HighScoreText.text = "HighScore:" + HighScore;//ハイスコアの表示
-        
+
     }
     public void ScoreCount(int e)//スコア加算のメソッド
     {
@@ -69,6 +69,6 @@ public class ScoreManager : MonoBehaviour
     }
     void OnDestroy()
     {
-        
+
     }
 }
