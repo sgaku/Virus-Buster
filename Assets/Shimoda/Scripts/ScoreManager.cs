@@ -36,9 +36,11 @@ public class ScoreManager : MonoBehaviour
         newHighScore = PlayerPrefs.GetInt("SCORE1", 1000);
         HighScore = newHighScore;
 
+
         int newScore;
         newScore = PlayerPrefs.GetInt("SCORE2", 0);
         ResultCanvas = GameObject.Find("ResultCanvas");//リザルトキャンバスを無効化
+
         ResultCanvas.SetActive(false);
     }
     // 削除時の処理
@@ -74,6 +76,7 @@ public class ScoreManager : MonoBehaviour
         PlayerPrefs.SetInt("SCORE1", HighScore);
         PlayerPrefs.SetInt("SCORE2", EndScore);
         PlayerPrefs.Save();
+
 
         ResultCanvas.SetActive(true);//リザルトキャンバスを召喚
     }
