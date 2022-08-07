@@ -706,9 +706,10 @@ MonoBehaviour:
   createTime: 3
   trashParent: {fileID: 193586092}
   variantVirus: {fileID: 2889767667968070513, guid: 68b52bb2bcc50405a98fd73ce7969dac, type: 3}
-  minVirusCreateCount: 8
-  maxVirusCreateCount: 12
-  addVirusScore: 300
+  minVirusCreateCount: 5
+  maxVirusCreateCount: 8
+  addVirusCount: 300
+  addVirusScore: 600
   farDistanceRange: {x: 20, y: 20}
 --- !u!4 &966741532
 Transform:

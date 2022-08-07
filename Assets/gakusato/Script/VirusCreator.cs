@@ -21,15 +21,19 @@ public class VirusCreator : MonoBehaviour
     [SerializeField] float createTime;
     //SetActive(false)にしたオブジェクトを整理するための親オブジェクト
     [SerializeField] Transform trashParent;
-    bool isCreateVariant = false;
-      [Header("2種類目のウイルス")]
+
+    [Header("2種類目のウイルス")]
     [SerializeField] GameObject variantVirus;
-     [Header("ウイルスが連続で出てくる最低値")]
+    [Header("ウイルスが連続で出てくる最低値")]
     [SerializeField] int minVirusCreateCount;
-     [Header("ウイルスが連続で出てくる最大値")]
+    [Header("ウイルスが連続で出てくる最大値")]
     [SerializeField] int maxVirusCreateCount;
+    [Header("敵の数を増やすスコア値")]
+    [SerializeField] int addVirusCount;
+    bool isAdding = false;
     [Header("敵の種類を増やすスコア値")]
     [SerializeField] int addVirusScore;
+    bool isCreateVariant = false;
     public Transform TrashParent
     {
         get { return trashParent; }
@@ -45,7 +49,7 @@ public class VirusCreator : MonoBehaviour
     int virusIndex;
     float[] addVector = { -10, 10 };
 
-     [Header("ウイルスをプレイヤーから半径何メートル以内に生成するか")]
+    [Header("ウイルスをプレイヤーから半径何メートル以内に生成するか")]
     [SerializeField] Vector2 farDistanceRange;
 
     // Start is called before the first frame update
@@ -68,13 +72,19 @@ public class VirusCreator : MonoBehaviour
             StartCoroutine(CreateVirus(createCount));
             currentTime = 0;
         }
-        if(ServiceLocator.i.scoreManager.TotalScore > addVirusScore && !isCreateVariant){
-
-virusList.Add(variantVirus);
-isCreateVariant = true;
+        if (ServiceLocator.i.scoreManager.TotalScore > addVirusCount && !isAdding)
+        {
+            minVirusCreateCount += 4;
+            maxVirusCreateCount += 4;
+            isAdding = true;
+        }
+        if (ServiceLocator.i.scoreManager.TotalScore > addVirusScore && !isCreateVariant)
+        {
+            virusList.Add(variantVirus);
+            isCreateVariant = true;
         }
     }
-   
+
     IEnumerator CreateVirus(float count)
     {
         for (int i = 0; i < count; i++)
