@@ -26,7 +26,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 64919
+  controlID: 69441
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 64911
+  controlID: 69400
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -417,9 +417,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -2.0339181, y: 12.152692, z: -0.09506424}
+    m_Target: {x: 181.84174, y: 358.34335, z: 3.0810702}
     speed: 2
-    m_Value: {x: -2.0339181, y: 12.152692, z: -0.09506424}
+    m_Value: {x: 181.84174, y: 358.34335, z: 3.0810702}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -470,9 +470,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 11.827097
+    m_Target: 107.7553
     speed: 2
-    m_Value: 11.827097
+    m_Value: 107.7553
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -516,8 +516,8 @@ MonoBehaviour:
     y: 397
     width: 810
     height: 410
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -611,7 +611,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: f84dfaff5e53faff2c56faff8e56faff065bfaffe469fafff66bfaff08c2faff6ac2faffea19fbfffc1afbff2e1bfbff901bfbff3661fbff5463fbff9065fbff466afbffac86fbff42dffbff3aeafbff90eafbff9ceafbff3eedfbff7aeefbff460afcff0e0cfcfff413fcffd017fcff8419fcff3c1bfcff041cfcff881efcff821ffcff2820fcffcc20fcff7c21fcff5822fcff4623fcff9424fcffa625fcffba26fcffa827fcff4c28fcff182bfcff062cfcffaa2cfcff4e2dfcff0c2ffcffda37fcffc838fcff6c39fcff1a3afcffbe3afcff723bfcff163cfcffba3cfcffa83dfcff983ffcffa840fcffae4cfcff1a5bfcff7c5bfcff725cfcff7c5dfcff7e5dfcff2a5efcffd25efcff8a5ffcff7c7afcff8880fcff8a82fcffb083fcff0685fcff1287fcff388dfcff9a8dfcff4c8efcff2490fcff8690fcff2a91fcffc891fcff6692fcff0493fcfffc93fcffd494fcff7895fcffea9efcffca9ffcffcaa0fcff86a1fcff24a2fcffc8a2fcff6ca3fcff10a4fcffb2a4fcffeca7fcff96aafcff8cabfcff74acfcff22aefcff60aefcff4ab1fcff44b3fcff56b5fcffacbafcff5ebefcffaec0fcff2a72fdff98bdfdff94bffdff86c1fdfff83ffefffc55feff7c60feffe469feff3a6cfeff1c6dfeff1a75feff7c75feffbceefffff4fc00001ed3010044d301008cdd0100d4e601005ae7010072e7010080e701008ee701006ef6010088f60100f6170200
+      m_ExpandedIDs: 32b7f9ffa4b7f9ff04b8f9ff06b8f9ff40bcf9ff58c0f9ff26c3f9ff96c8f9ff08c9f9ff6ac9f9ffa2d0f9ff04d1f9fff84dfaff5e53faff2c56faff8e56faff065bfaffe469fafff66bfaff08c2faff6ac2faffea19fbfffc1afbff2e1bfbff901bfbff3661fbff5463fbff9065fbff466afbffac86fbff42dffbff3aeafbff90eafbff9ceafbff3eedfbff7aeefbff460afcff0e0cfcfff413fcffd017fcff8419fcff3c1bfcff041cfcff881efcff821ffcff2820fcffcc20fcff7c21fcff5822fcff4623fcff9424fcffa625fcffba26fcffa827fcff4c28fcff182bfcff062cfcffaa2cfcff4e2dfcff0c2ffcffda37fcffc838fcff6c39fcff1a3afcffbe3afcff723bfcff163cfcffba3cfcffa83dfcff983ffcffa840fcffae4cfcff1a5bfcff7c5bfcff725cfcff7c5dfcff7e5dfcff2a5efcffd25efcff8a5ffcff7c7afcff8880fcff8a82fcffb083fcff0685fcff1287fcff388dfcff9a8dfcff4c8efcff2490fcff8690fcff2a91fcffc891fcff6692fcff0493fcfffc93fcffd494fcff7895fcffea9efcffca9ffcffcaa0fcff86a1fcff24a2fcffc8a2fcff6ca3fcff10a4fcffb2a4fcffeca7fcff96aafcff8cabfcff74acfcff22aefcff60aefcff4ab1fcff44b3fcff56b5fcffacbafcff5ebefcffaec0fcff2a72fdff98bdfdff94bffdff86c1fdfff83ffefffc55feff7c60feffe469feff3a6cfeff1c6dfeff1a75feff7c75feffbceefffff4fc00001ed3010044d301008cdd0100d4e601005ae7010072e7010080e701008ee701006ef6010088f60100f6170200fcd6020086050300ee0c0300
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -702,21 +702,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/tomoki_akasaka/startScene
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/tomoki_akasaka/startScene
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\SHIMODA\Documents\2208_proto_g
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 722}
-    m_SelectedIDs: 20610000
-    m_LastClickedID: 24864
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: b0600000
+    m_LastClickedID: 24752
     m_ExpandedIDs: 000000007c6000007e60000080600000826000008460000086600000886000008a6000008c6000008e60000090600000926000009460000096600000986000009a6000009c6000009e600000a060000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -770,9 +770,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 28b7f9ff
+    m_LastClickedInstanceID: -411864
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: da780000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -820,8 +820,8 @@ MonoBehaviour:
     y: 0
     width: 309
     height: 807
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -861,7 +861,7 @@ MonoBehaviour:
     m_CachedPref: -160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
+  m_LastInspectedObjectInstanceID: -411864
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
