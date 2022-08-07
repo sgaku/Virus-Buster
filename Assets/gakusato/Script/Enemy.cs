@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     Transform targetObject;
     //移動に使うrigidBody
     [SerializeField] Rigidbody2D rigidBody2d;
+    [SerializeField] SpriteRenderer spriteRenderer;
     //移動スピード
     [SerializeField] float speed;
     //死亡エフェクト
@@ -27,6 +28,8 @@ public class Enemy : MonoBehaviour
     Vector2 direction;
     //前のフレームとの位置の差
     Vector2 diffPos;
+
+    float _time;
 
     bool isChangeStatus = false;
 
@@ -83,7 +86,17 @@ public class Enemy : MonoBehaviour
     {
         if (ServiceLocator.i.charaManager.currentCharaState == CharaManager.CharaState.Dead) gameObject.SetActive(false);
         currentTime += Time.deltaTime;
-        if (currentTime >= 10 && !isChangeStatus) ChangeVirusStatus();
+        if (currentTime >= 10)
+        {
+            //スプライトのアルファ値を点滅させる
+            var color = spriteRenderer.color;
+            //0~1 -> 0.5~1
+            color.a = (Mathf.Sin(Time.time * 6f) / 2 + 0.5f) / 2 + 0.5f;
+
+            // Debug.Log(color.a);
+            spriteRenderer.color = color;
+            if (!isChangeStatus) ChangeVirusStatus();
+        }
     }
 
     void FixedUpdate()
@@ -93,6 +106,7 @@ public class Enemy : MonoBehaviour
     }
     void ChangeVirusStatus()
     {
+
         speed += 1.5f;
         isChangeStatus = true;
     }

@@ -21,6 +21,8 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;//instanceで呼び出す用
 
     [SerializeField] GameObject SkillPanel;
+    [SerializeField] Text skillCountText;
+    public int skillCount;
 
     public void Awake()//外から呼び出せるように
     {
@@ -48,6 +50,7 @@ public class ScoreManager : MonoBehaviour
         {
             SkillPanel.SetActive(true);
         }
+
         
     }
     // 削除時の処理
