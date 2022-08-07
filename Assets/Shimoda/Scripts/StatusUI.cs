@@ -24,7 +24,7 @@ public class StatusUI : MonoBehaviour
         int inrFireRateLevel;
         inrFireRateLevel =  PlayerPrefs.GetInt("FireRateLevel", 0);
         inrFireRateLevel += 1;
-        StatusTextFireRate.text = "˜AŽË‘¬“x LV." + inrFireRateLevel;
+        StatusTextFireRate.text = "˜AŽË LV." + inrFireRateLevel;
 
       //  int SpeciallSkillLevel;
     //    SpeciallSkillLevel = PlayerPrefs.GetInt("SkillLevel", 0);
