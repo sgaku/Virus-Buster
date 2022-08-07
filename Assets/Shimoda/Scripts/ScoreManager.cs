@@ -36,7 +36,7 @@ public class ScoreManager : MonoBehaviour
     {
         int newHighScore;
         // スコアのロード
-        newHighScore = PlayerPrefs.GetInt("SCORE1", 1000);
+        newHighScore = PlayerPrefs.GetInt("SCORE1", 0);
         HighScore = newHighScore;
 
 
@@ -61,10 +61,10 @@ public class ScoreManager : MonoBehaviour
     {
         ScoreText = GameObject.Find("ScoreText").GetComponent<Text>();//スコアテキストを名前で取得
         HighScoreText = GameObject.Find("HighScoreText").GetComponent<Text>();//名前で取得
-        KillEnemyText = GameObject.Find("KillEnemyText").GetComponent<Text>();//名前で取得
+        //KillEnemyText = GameObject.Find("KillEnemyText").GetComponent<Text>();//名前で取得
         ScoreText.text = "スコア:" + TotalScore.ToString();//スコアを更新、表示
         HighScoreText.text = "ハイスコア:" + HighScore;//ハイスコアの表示
-        KillEnemyText.text = "倒したウイルス\n" + TotalKill.ToString();//キル数の表示
+       // KillEnemyText.text = "倒したウイルス\n" + TotalKill.ToString();//キル数の表示
     }
     public void ScoreCount(int e)//スコア加算のメソッド
     {
@@ -72,7 +72,7 @@ public class ScoreManager : MonoBehaviour
     }
     public void KillCount()//キル数加算のメソッド
     {
-        TotalKill++;//呼べばスコア加算できる
+        //TotalKill++;//呼べばスコア加算できる
     }
     public void PlayerDeath()//プレイヤーが死んだzら
     {
