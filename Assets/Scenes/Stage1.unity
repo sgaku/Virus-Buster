@@ -518,6 +518,30 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1365690921, guid: 8a6b5a9f3f1de454286c1532aa170370, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365690921, guid: 8a6b5a9f3f1de454286c1532aa170370, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365690921, guid: 8a6b5a9f3f1de454286c1532aa170370, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365690921, guid: 8a6b5a9f3f1de454286c1532aa170370, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365690921, guid: 8a6b5a9f3f1de454286c1532aa170370, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -178
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365690921, guid: 8a6b5a9f3f1de454286c1532aa170370, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 197
+      objectReference: {fileID: 0}
     - target: {fileID: 4077677688316206822, guid: 8a6b5a9f3f1de454286c1532aa170370, type: 3}
       propertyPath: m_IsActive
       value: 1
