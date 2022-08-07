@@ -14,7 +14,7 @@ public class StatusUI : MonoBehaviour
     {
         StatusTextMoveSpeed = GameObject.Find("StatusTextMoveSpeed").GetComponent<Text>();
         StatusTextFireRate = GameObject.Find("StatusTextFireRate").GetComponent<Text>();
-        StatusTextSpeciallSkill = GameObject.Find("StatusTextSpeciallSkill").GetComponent<Text>();
+//        StatusTextSpeciallSkill = GameObject.Find("StatusTextSpeciallSkill").GetComponent<Text>();
 
         int inMoveSpeedLevel;
         inMoveSpeedLevel =  PlayerPrefs.GetInt("MoveSpeedLevel", 0);
@@ -26,10 +26,10 @@ public class StatusUI : MonoBehaviour
         inrFireRateLevel += 1;
         StatusTextFireRate.text = "òAéÀë¨ìx LV." + inrFireRateLevel;
 
-        int SpeciallSkillLevel;
-        SpeciallSkillLevel = PlayerPrefs.GetInt("SkillLevel", 0);
-        SpeciallSkillLevel += 1;
-        StatusTextSpeciallSkill.text = "ïKéEãZÅ@LV." + SpeciallSkillLevel;
+      //  int SpeciallSkillLevel;
+    //    SpeciallSkillLevel = PlayerPrefs.GetInt("SkillLevel", 0);
+  //      SpeciallSkillLevel += 1;
+//        StatusTextSpeciallSkill.text = "ïKéEãZÅ@LV." + SpeciallSkillLevel;
     }
 
     // Update is called once per frame
