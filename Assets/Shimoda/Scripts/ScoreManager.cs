@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour
     private Text HighScoreText;//これまでのハイスコアを表示する
     private Text KillEnemyText;//殺した敵の数のテキスト
 
-    private int TotalScore = 0;//スコアの合計
+    public int TotalScore = 0;//スコアの合計
     [HideInInspector] public int EndScore;//プレイヤーが死んだときのスコア
     private int HighScore = 0;//前回までのハイスコア
     private int TotalKill = 0;//総キル数
