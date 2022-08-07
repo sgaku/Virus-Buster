@@ -40,6 +40,7 @@ public class VirusCreator : MonoBehaviour
         set { trashParent = value; }
     }
     float createCount;
+    float preTotalScore;
     Vector2 createPosition;
     Vector2 farMaxPosition;
     Vector2 farMinPosition;
@@ -56,6 +57,7 @@ public class VirusCreator : MonoBehaviour
     void Start()
     {
         //スタート時にウイルスを発生させるため
+        preTotalScore = ServiceLocator.i.scoreManager.TotalScore;
         currentTime = createTime;
         minCameraPosition = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         maxCameraPosition = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
@@ -64,6 +66,7 @@ public class VirusCreator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(minVirusCreateCount);
         if (ServiceLocator.i.charaManager.currentCharaState == CharaManager.CharaState.Dead) return;
         currentTime += Time.deltaTime;
         if (currentTime > createTime)
@@ -72,11 +75,11 @@ public class VirusCreator : MonoBehaviour
             StartCoroutine(CreateVirus(createCount));
             currentTime = 0;
         }
-        if (ServiceLocator.i.scoreManager.TotalScore > addVirusCount && !isAdding)
+        if (ServiceLocator.i.scoreManager.TotalScore > preTotalScore + addVirusCount)
         {
             minVirusCreateCount += 4;
             maxVirusCreateCount += 4;
-            isAdding = true;
+            preTotalScore = ServiceLocator.i.scoreManager.TotalScore;
         }
         if (ServiceLocator.i.scoreManager.TotalScore > addVirusScore && !isCreateVariant)
         {
