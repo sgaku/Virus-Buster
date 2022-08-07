@@ -21,19 +21,31 @@ public class sceneManager : MonoBehaviour
 
     public void SceneChange()
     {
-        SceneManager.LoadScene("Stage1");
+        StartCoroutine("Cont");
     }
 
     
     public void SceneChangeQuit()
     {
+        StartCoroutine("quit");
+ 
+    }
+
+    private IEnumerator quit()
+    {
         audio.PlayOneShot(pi);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("StartMenu");
     }
     
     public void SceneChangeContinue()
     {
+          StartCoroutine("Cont");
+    }
+    private IEnumerator Cont()
+    {
         audio.PlayOneShot(pi);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Stage1");
     }
 }

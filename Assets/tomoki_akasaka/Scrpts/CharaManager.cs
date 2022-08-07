@@ -64,6 +64,7 @@ public class CharaManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transform.position = new Vector2(0,0);
         skillCount = PlayerPrefs.GetInt("SkillLevel", 0);
 
         skillCountText.text = "残り" + skillCount.ToString() + "発";
@@ -81,10 +82,10 @@ public class CharaManager : MonoBehaviour
             specialSkill.skill1 = false;
         }
 
-        fireRate = initialFireRate - PlayerPrefs.GetInt("FireRateLevel", 0) * fireRateUnit;
-        fireRate = initialFireRate - fireRateUnit * Mathf.Log(PlayerPrefs.GetInt("FireRateLevel", 0) + 1);
+        //fireRate = initialFireRate - PlayerPrefs.GetInt("FireRateLevel", 0) * fireRateUnit;
+        fireRate = initialFireRate - fireRateUnit * Mathf.Log(PlayerPrefs.GetInt("FireRateLevel", 0) + 1, 2);
 
-        speed = Mathf.Log(PlayerPrefs.GetInt("MoveSpeedLevel", 0) + 1) * speedUnit + initialMoveSpeed;
+        speed = Mathf.Log(PlayerPrefs.GetInt("MoveSpeedLevel", 0) + 1, 2) * speedUnit + initialMoveSpeed;
         float nowBulletPower = PlayerPrefs.GetInt("BulletPowerLevel", 0) * bulletPowerUnit + initialBulletPower;
 
         audioSource = transform.GetComponent<AudioSource>();
@@ -216,7 +217,7 @@ public class CharaManager : MonoBehaviour
         Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0,0));
         Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1,1));
         position.x = Mathf.Clamp(position.x, min.x+1.1f, max.x-1.1f);
-        position.y = Mathf.Clamp(position.y, min.y+0.9f, 6.3f);
+        position.y = Mathf.Clamp(position.y, min.y+0.9f, 11f);
         transform.position = position;
     }
 
@@ -260,7 +261,7 @@ public class CharaManager : MonoBehaviour
         GameObject downObj = transform.Find("hit2_down").gameObject;
         downObj.SetActive(true);
         audioSource.PlayOneShot(deadAudio);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         downObj.SetActive(false);
         ScoreManager.instance.PlayerDeath();
 

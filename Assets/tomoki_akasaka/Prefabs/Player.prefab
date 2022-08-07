@@ -70,6 +70,9 @@ MonoBehaviour:
   fireRateUnit: 0.15
   bulletPowerUnit: 1
   speedUnit: 1
+  SkillPanel: {fileID: 0}
+  skillCountText: {fileID: 0}
+  skillCount: 0
 --- !u!82 &930826341
 AudioSource:
   m_ObjectHideFlags: 0

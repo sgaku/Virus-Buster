@@ -14,12 +14,15 @@ public class Enemy : MonoBehaviour
     //移動に使うrigidBody
     [SerializeField] Rigidbody2D rigidBody2d;
     [SerializeField] SpriteRenderer spriteRenderer;
+
     //移動スピード
     [SerializeField] float speed;
     //死亡エフェクト
     [SerializeField] GameObject deadEffect;
     // [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip deadAudio;
+    [Header("ウイルスの番号")]
+    [SerializeField] int virusVariant;
     //移動する際の角度
     float angle;
     //前フレームの位置情報
@@ -87,16 +90,16 @@ public class Enemy : MonoBehaviour
     {
         if (ServiceLocator.i.charaManager.currentCharaState == CharaManager.CharaState.Dead) gameObject.SetActive(false);
         currentTime += Time.deltaTime;
-        if (currentTime >= 10)
+        if (currentTime >= 5 && !isChangeStatus)
         {
             //スプライトのアルファ値を点滅させる
             var color = spriteRenderer.color;
+            // spriteRenderer.material.SetColor("_Tint", color);
             //0~1 -> 0.5~1
             color.a = (Mathf.Sin(Time.time * 6f) / 2 + 0.5f) / 2 + 0.5f;
-
-            // Debug.Log(color.a);
             spriteRenderer.color = color;
-            if (!isChangeStatus) ChangeVirusStatus();
+            Invoke(nameof(ChangeVirusStatus), 2f);
+            // if (!isChangeStatus) ChangeVirusStatus();
         }
     }
 
@@ -107,7 +110,12 @@ public class Enemy : MonoBehaviour
     }
     void ChangeVirusStatus()
     {
-
+        if (isChangeStatus) return;
+        var color = spriteRenderer.color;
+        color.a = 1f;
+        if (virusVariant == 1) color.r = 0.5f;
+        else if (virusVariant == 2) color.g = 0.5f;
+        spriteRenderer.color = color;
         speed += 1f;
         isChangeStatus = true;
     }
