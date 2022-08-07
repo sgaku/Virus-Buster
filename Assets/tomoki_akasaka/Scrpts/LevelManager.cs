@@ -53,7 +53,9 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            int moveSpeedPoint = expTable[PlayerPrefs.GetInt("MoveSpeedLevel")] - PlayerPrefs.GetInt("MoveSpeedPoint", 0);
+            //int moveSpeedPoint = expTable[PlayerPrefs.GetInt("MoveSpeedLevel")] - PlayerPrefs.GetInt("MoveSpeedPoint", 0);
+            int moveSpeedPoint = 100;
+
             int moveSpeedLevel = PlayerPrefs.GetInt("MoveSpeedLevel", 0);
             speedLevelText.text = "LV." + (moveSpeedLevel+1).ToString();
             speedLevelPointText.text = moveSpeedPoint.ToString();
@@ -70,6 +72,8 @@ public class LevelManager : MonoBehaviour
             int bulletPowerLevel = PlayerPrefs.GetInt("BulletPowerLevel", 0);
             powerLevelText.text = "LV." + (bulletPowerLevel+1).ToString();
             powerLevelPointText.text = bulletPowerPoint.ToString();
+            powerLevelPointText.text = "100";
+
         }
 
         if(expTableSkill.Length <= PlayerPrefs.GetInt("SkillLevel", 0))
@@ -231,7 +235,7 @@ public class LevelManager : MonoBehaviour
         }
         //PlayerPrefs.SetInt("FireRatePoint", expTable[nowLevel+1]);
 
-        rateLevelPointText.text = expTable[nowLevel+1].ToString();
+        rateLevelPointText.text = "100";
     }
     
     public void LevelUpMoveSpeed()
@@ -252,7 +256,7 @@ public class LevelManager : MonoBehaviour
         }
         //PlayerPrefs.SetInt("MoveSpeedPoint", expTable[nowLevel+1]);
 
-        speedLevelPointText.text = expTable[nowLevel+1].ToString();
+        speedLevelPointText.text = "100";
 
     }
 
@@ -275,7 +279,7 @@ public class LevelManager : MonoBehaviour
         //PlayerPrefs.SetInt("BulletPowerPoint", expTable[nowLevel+1]);
 
 
-        powerLevelPointText.text = expTable[nowLevel+1].ToString();
+        powerLevelPointText.text = "100";
     }
 
     public void LevelUpSkill()

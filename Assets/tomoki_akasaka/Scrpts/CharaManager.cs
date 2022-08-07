@@ -156,7 +156,7 @@ public class CharaManager : MonoBehaviour
 
         Vector2 position = transform.position;
         float speed_temp = speed * Time.deltaTime;
-        Debug.Log(Time.deltaTime);
+        // Debug.Log(Time.deltaTime);
 
 
         if (Input.GetKey("left") || Input.GetKey((KeyCode.A)))

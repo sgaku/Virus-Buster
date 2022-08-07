@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour
         //死亡判定
         if (other.gameObject.CompareTag("Bullet"))
         {
-
+            ServiceLocator.i.scoreManager.KillCount();
             //当たってきた球も消す
             Instantiate(deadEffect, transform.position, Quaternion.Euler(-45, 0, 0));
             other.gameObject.SetActive(false);
@@ -64,6 +64,7 @@ public class Enemy : MonoBehaviour
         }
         else if (other.CompareTag("ChargeBullet"))
         {
+            ServiceLocator.i.scoreManager.KillCount();
             ServiceLocator.i.scoreManager.ScoreCount(score);
             currentVirusState = VirusState.Dead;
             // deadEffect.gameObject.SetActive(true);
@@ -107,7 +108,7 @@ public class Enemy : MonoBehaviour
     void ChangeVirusStatus()
     {
 
-        speed += 1.5f;
+        speed += 1f;
         isChangeStatus = true;
     }
 

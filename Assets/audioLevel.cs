@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class sceneManager : MonoBehaviour
+public class audioLevel : MonoBehaviour
 {
     public AudioClip pi;
     AudioSource audio;
@@ -19,21 +18,8 @@ public class sceneManager : MonoBehaviour
         
     }
 
-    public void SceneChange()
-    {
-        SceneManager.LoadScene("Stage1");
-    }
-
-    
-    public void SceneChangeQuit()
+    void clickaudio()
     {
         audio.PlayOneShot(pi);
-        SceneManager.LoadScene("StartMenu");
-    }
-    
-    public void SceneChangeContinue()
-    {
-        audio.PlayOneShot(pi);
-        SceneManager.LoadScene("Stage1");
     }
 }
