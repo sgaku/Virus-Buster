@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class CharaManager : MonoBehaviour
 {
@@ -54,12 +55,18 @@ public class CharaManager : MonoBehaviour
     [SerializeField] float fireRateUnit;
     [SerializeField] float bulletPowerUnit;
     [SerializeField] float speedUnit;
+    [SerializeField] GameObject SkillPanel;
+    [SerializeField] Text skillCountText;
+    public int skillCount;
 
     
 
     // Start is called before the first frame update
     void Start()
     {
+        skillCount = PlayerPrefs.GetInt("SkillLevel", 0);
+
+        skillCountText.text = "残り" + skillCount.ToString() + "発";
         //Playerの状態をAliveに
         currentCharaState = CharaState.Alive;
 
@@ -113,7 +120,14 @@ public class CharaManager : MonoBehaviour
         //１入力で必殺技（チャージショット）
         if(Input.GetKey(KeyCode.Alpha1) && specialSkill.skill1 == true)
         {
-            specialSkill.skill1 = false;
+            skillCount -= 1;
+            skillCountText.text = "残り" + skillCount.ToString() + "発";
+
+            if(skillCount == 0)
+            {
+                specialSkill.skill1 = false;
+            }
+            
             specialSkill.nowObj = nowObj;
             specialSkill.StartCoroutine("chargeShotCoroutine");
         }

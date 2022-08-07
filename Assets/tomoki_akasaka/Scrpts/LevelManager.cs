@@ -24,6 +24,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private AudioClip levelUpAudio;
     [SerializeField] private GameObject skillGetPanel;
     public AudioSource audio;
+    [SerializeField] int skillExp;
 
 
     // Start is called before the first frame update
@@ -78,7 +79,9 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            int skillPoint = expTableSkill[PlayerPrefs.GetInt("SkillLevel")] - PlayerPrefs.GetInt("SkillPoint", 0);
+            //int skillPoint = expTableSkill[PlayerPrefs.GetInt("SkillLevel")] - PlayerPrefs.GetInt("SkillPoint", 0);
+            int skillPoint = skillExp;
+
             int skillLevel = PlayerPrefs.GetInt("SkillLevel", 0);
             skillLevelText.text = "LV." + (skillLevel+1).ToString();
             skillLevelPointText.text = skillPoint.ToString();
@@ -187,18 +190,18 @@ public class LevelManager : MonoBehaviour
     public void PointUpSkill()
     {
         int scorePoint = PlayerPrefs.GetInt("SCORE2", 0);
-        if(scorePoint < 100 || expTable.Length <= PlayerPrefs.GetInt("SkillLevel", 0))
+        if(scorePoint < skillExp || expTable.Length <= PlayerPrefs.GetInt("SkillLevel", 0))
         {
             
             return;
         }
-        scorePoint -= 100;
+        scorePoint -= skillExp;
         PlayerPrefs.SetInt("SCORE2", scorePoint);
         totalScoreText.text = scorePoint.ToString();
 
         int skillPoint = PlayerPrefs.GetInt("SkillPoint", 0);
         int skillLevel = PlayerPrefs.GetInt("SkillLevel", 0);
-        int nowPoint = int.Parse(skillLevelPointText.text) - pointUnit;
+        int nowPoint = 0;
         skillLevelPointText.text = nowPoint.ToString();
         PlayerPrefs.SetInt("SkillPoint", skillPoint + pointUnit);
         if(nowPoint == 0)
@@ -278,16 +281,16 @@ public class LevelManager : MonoBehaviour
     public void LevelUpSkill()
     {
         audio.PlayOneShot(levelUpAudio);
-        float skillLevel = PlayerPrefs.GetFloat("SkillLevel", 0);
+        int skillLevel = PlayerPrefs.GetInt("SkillLevel", 0);
         if(skillLevel == 0)
         {
             skillGetPanel.SetActive(true);
         }
-        PlayerPrefs.SetFloat("SkillLevel", skillLevel+1);
         int nowLevel = PlayerPrefs.GetInt("SkillLevel", 0);
         PlayerPrefs.SetInt("SkillLevel", nowLevel+1);
+        nowLevel = PlayerPrefs.GetInt("SkillLevel",nowLevel);
 
-        skillLevelText.text = "LV." + (nowLevel+2).ToString();
+        skillLevelText.text = "LV." + (nowLevel+1).ToString();
         if(nowLevel + 1 >= expTableSkill.Length)
         {
             skillLevelText.text = "MAX";
@@ -296,7 +299,8 @@ public class LevelManager : MonoBehaviour
         //PlayerPrefs.SetInt("skillPoint", expTableSkill[nowLevel+1]);
 
 
-        skillLevelPointText.text = expTableSkill[nowLevel+1].ToString();
+        //skillLevelPointText.text = expTableSkill[nowLevel+1].ToString();
+        skillLevelPointText.text = skillExp.ToString();
 
     }
 
