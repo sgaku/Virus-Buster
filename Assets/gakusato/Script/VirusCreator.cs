@@ -17,11 +17,23 @@ public class VirusCreator : MonoBehaviour
     //ウイルスの種類を格納
     [SerializeField] List<GameObject> virusList = new List<GameObject>();
     float currentTime = 0f;
+    [Header("何秒ごとにウイルスを出すか")]
     [SerializeField] float createTime;
     //SetActive(false)にしたオブジェクトを整理するための親オブジェクト
     [SerializeField] Transform trashParent;
+
+    [Header("2種類目のウイルス")]
+    [SerializeField] GameObject variantVirus;
+    [Header("ウイルスが連続で出てくる最低値")]
     [SerializeField] int minVirusCreateCount;
+    [Header("ウイルスが連続で出てくる最大値")]
     [SerializeField] int maxVirusCreateCount;
+    [Header("敵の数を増やすスコア値")]
+    [SerializeField] int addVirusCount;
+    bool isAdding = false;
+    [Header("敵の種類を増やすスコア値")]
+    [SerializeField] int addVirusScore;
+    bool isCreateVariant = false;
     public Transform TrashParent
     {
         get { return trashParent; }
@@ -34,8 +46,10 @@ public class VirusCreator : MonoBehaviour
     Vector2 diffVector;
     Vector2 minCameraPosition;
     Vector2 maxCameraPosition;
+    int virusIndex;
     float[] addVector = { -10, 10 };
-    //発生させる範囲の幅
+
+    [Header("ウイルスをプレイヤーから半径何メートル以内に生成するか")]
     [SerializeField] Vector2 farDistanceRange;
 
     // Start is called before the first frame update
@@ -43,7 +57,6 @@ public class VirusCreator : MonoBehaviour
     {
         //スタート時にウイルスを発生させるため
         currentTime = createTime;
-
         minCameraPosition = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         maxCameraPosition = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
     }
@@ -59,20 +72,30 @@ public class VirusCreator : MonoBehaviour
             StartCoroutine(CreateVirus(createCount));
             currentTime = 0;
         }
+        if (ServiceLocator.i.scoreManager.TotalScore > addVirusCount && !isAdding)
+        {
+            minVirusCreateCount += 4;
+            maxVirusCreateCount += 4;
+            isAdding = true;
+        }
+        if (ServiceLocator.i.scoreManager.TotalScore > addVirusScore && !isCreateVariant)
+        {
+            virusList.Add(variantVirus);
+            isCreateVariant = true;
+        }
     }
+
     IEnumerator CreateVirus(float count)
     {
         for (int i = 0; i < count; i++)
         {
             //TODO: 生成する位置のランダム化、キャラクターの周りを囲うように生成
-            var index = Random.Range(0, virusList.Count - 1);
+            virusIndex = Random.Range(0, virusList.Count);
             Vector2 targetVector = targetPosition.position;
             farMaxPosition = targetVector + farDistanceRange;
             farMinPosition = targetVector - farDistanceRange;
             createPosition.y = Random.Range(farMinPosition.y, farMaxPosition.y);
             createPosition.x = Random.Range(farMinPosition.x, farMaxPosition.x);
-
-
             diffVector.x = targetVector.x - createPosition.x;
             diffVector.y = targetVector.y - createPosition.y;
             var x = Mathf.Abs(diffVector.x);
@@ -91,7 +114,7 @@ public class VirusCreator : MonoBehaviour
 
             if (createPosition.x > maxCameraPosition.x || createPosition.x < minCameraPosition.x) continue;
             if (createPosition.y > maxCameraPosition.y || createPosition.y < minCameraPosition.y) continue;
-            Instantiate(virusList[index], createPosition, Quaternion.identity, transform);
+            Instantiate(virusList[virusIndex], createPosition, Quaternion.identity, transform);
 
             yield return null;
         }
