@@ -82,9 +82,10 @@ public class CharaManager : MonoBehaviour
         }
 
         fireRate = initialFireRate - PlayerPrefs.GetInt("FireRateLevel", 0) * fireRateUnit;
-        speed = PlayerPrefs.GetInt("MoveSpeedLevel", 0) * speedUnit + initialMoveSpeed;
-        float nowBulletPower = PlayerPrefs.GetInt("BulletPowerLevel", 0) * bulletPowerUnit + initialBulletPower;
+        fireRate = initialFireRate - fireRateUnit * Mathf.Log(PlayerPrefs.GetInt("FireRateLevel", 0) + 1);
 
+        speed = Mathf.Log(PlayerPrefs.GetInt("MoveSpeedLevel", 0) + 1) * speedUnit + initialMoveSpeed;
+        float nowBulletPower = PlayerPrefs.GetInt("BulletPowerLevel", 0) * bulletPowerUnit + initialBulletPower;
 
         audioSource = transform.GetComponent<AudioSource>();
 
